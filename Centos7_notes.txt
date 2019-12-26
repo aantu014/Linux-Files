@@ -1,0 +1,172 @@
+Centos 7
+
+- sudo dhclient
+
+- sudo yum install net-tools
+  
+- sudo yum update && upgrade
+
+- sudo yum install java
+- java -version  
+  
+- sudo yum install javac-devel
+- javac -version
+  
+If the previous command does not work try the following
+- sudo yum install java-devel
+- javac -version
+
+
+- sudo yum install wget    //installing wget 
+- wget -U firefox target   // running wget. Found by Menendez Mitchell
+  
+- Install locate command   //command to locate any file with ???? on their name 
+  - yum install mlocate
+  - updatedb
+  - to execute run: locate target   NOT  mlocate target
+    ex: locate javac
+
+Set full size screen  
+  - yum install gcc  epel-release.noarch  kernel-headers kernel-devel  
+  - On the view choice select: Scale Factor (I selected 200%)
+  
+--------------------------------------------------------
+Full Size Screen and resolutions by Rafael Serrano:
+
+Steps for CentOS 7 Virtual Box (Windows 10 host)  
+
+Before running your VirtualBox program, download the Virtual Box guest Additions needed for your kernel from this link: 
+http://download.virtualbox.org/virtualbox/
+
+Make sure that you choose the same version as the one for your virtual box (you can find it by pressing help and about virtual box ). 
+
+Press on the version and download, in my case, it is 
+VBoxGuestAdditions_5.2.6.iso file
+
+Add VBoxGuestAdditions_5.2.6.iso to a disk on your Centos
+- Highlight your OS vm,
+- Choose Setting
+- Select Storage 
+- Add a new disk, and look for your iso file.
+- In Controller:IDE there are two options:  
+  - Adds optical disk and Adds hard disk. 
+  - Choose optical disk 
+  - then "choose disk" and add the
+    VBoxGuestAdditions_5.2.6.iso
+    you previously downloaded.
+- Run your VM and click on devices 
+
+
+Run your machine again, and do the following commands: 
+ 1. sudo su
+ 2. vi /etc/default/grub   ***Press I to format the text 
+ 3. Add vga=792 inside the "-quotes for GRUB_CMDLINE_LINUX, f.ex. GRUB_CMDLINE_LINUX="crashkernel=auto rhgb quiet vga= [NUMBER HERE]"
+    [NUMBER HERE] == The value that is equal to your vga resolution, you can find some values here: https://www.pendrivelinux.com/vga-boot-modes-to-set-screen-resolution/
+    For example: for a 1024x768x24 the value will be 792. 
+	
+    Depth	640x480  800x600  1024x768  1152x864  1280x1024  1600x1200
+    8 bit	vga=769	 vga=771  vga=773   vga=353   vga=775	 vga=796
+   16 bit	vga=785	 vga=788  vga=791   vga=355   vga=794	 vga=798
+   24 bit	vga=786	 vga=789  vga=792   vga=795   vga=799
+	
+	
+ 4. Press esc and type :wq and hit enter
+ 5. grub2-mkconfig -o /boot/grub2/grub.cfg
+ 6.reboot 
+
+When rebooting your machine you have three options from where you can boot: 
+Use the one that is CentOS Linux (3.10.0-862.el7.x86_64) 7 (Core) 
+In my computer is the second one. 
+
+Boot and the resolution should be fine. 
+
+NOTE: Is will not be 100% properly adapted to your screen and you will need to use the side navigation bar. 
+
+--------------------------------------------------------  
+
+SET Email for CENTOS7:   
+
+The goal here is to use your gmail email account as an SMTP email server to send your emails out
+
+dhclient  /if it is not automatically loading as shown in the dhclient section above
+
+
+--First go to the gmail account that you want to add to CentOS 7: yum
+
+1.Go to the Less secure apps section of your Google Account.
+  https://support.google.com/accounts/answer/6010255?hl=en
+2.Turn on Allow less secure apps. If you don't see this setting, your 
+administrator might have turned off less secure app account access.
+
+Open CentOS 7: 
+
+--In the terminal run the following commands: 
+
+dhclient //make sure that you are connected to the net, you can run ping google.com
+           to be sure. 
+yum -y install postfix cyrus-sasl-plain mailx //Install Postfix with SASL authentication
+
+systemctl restart postfix //restart the service 
+
+systemctl enable postfix //start and boot the service
+
+vi /etc/postfix/main.cf //open the main.cf file that comes with postfix and add 
+                          the following lines at the end of the file
+
+                          relayhost = [smtp.gmail.com]:587
+                          smtp_use_tls = yes
+                          smtp_sasl_auth_enable = yes
+                          smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+                          smtp_tls_CAfile = /etc/ssl/certs/ca-bundle.crt
+                          smtp_sasl_security_options = noanonymous
+                          smtp_sasl_tls_security_options = noanonymous
+                          //save and close the file 
+
+vi /etc/postfix/sasl_passwd //create a new file that will hold your username and 
+                              password. Make sure that no one can see your screen
+                              at this time. 
+
+                              Add the following line : [smtp.gmail.com]:587 username:password
+
+                              Insert a valid gmail account and password
+                              Since we are using the gmail SMTP server, if you are using
+                              your gmail acount you can use:
+                              examples: joe007:secrect
+
+                              Using other emails:
+                              examples: joe007@fiu.edu:secrect
+                                   
+
+postmap /etc/postfix/sasl_passwd //generate a postfix lookup table 
+
+chown root:postfix /etc/postfix/sasl_passwd*
+chmod 640 /etc/postfix/sasl_passwd*          //restrict the access to the sasl_passwd file
+                                               Only root users can acess it now 
+systemctl reload postfix               //reload the postfix config. 
+
+echo "This is a test." | mail -s "test message" user@example.net //send a test email to a valid gmail account
+                                                                   It can be your account. 
+
+--Check if you have recived an email in your account. If not make sure that your account
+and password are correct. 
+
+--You can also run: 
+tail -f /var/log/maillog //to review the emails sent. 
+
+debug_peer_list=smtp.gmail.com
+debug_peer_level=3             //to check where the error is located 
+
+systemctl reload postfix //reload the system.
+
+--Email with a file attached:
+
+echo "This is a test message" | mail -s Test -a example.txt user@example.com 
+//echo "This is a test message" is the body of the email 
+//-s Test is the subject 
+// -a example.txt the file that you want to attach. Make sure that you send the mail from the directory where the file is located in orde to access that file. 
+//user@example.com receiver email account
+
+--------------------------------------------------------
+
+
+
