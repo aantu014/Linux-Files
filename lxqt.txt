@@ -1,0 +1,45 @@
+﻿NetworkManager
+NetworkManager-applet
+ark
+Lightdm
+lximage-qt
+Lxqt-about
+lxqt-config
+lxqt-globalkeys
+lxqt-notificationd
+lxqt-openssh-askpass
+lxqt-panel
+lxqt-policykit
+lxqt-powermanagement
+lxqt-qtplugin
+lxqt-runner
+lxqt-themes
+obconf
+openbox
+pavucontrol-qt
+pcmanfm-qt
+pulseaudio-module-bluetooth
+pulseaudio-module-gconf
+pulseaudio-module-lirc
+pulseaudio-module-x11
+pulseaudio-module-zeroconf
+pulseaudio-utils
+system-config-printer
+
+
+xorg-x11-server
+
+
+lxqt-themes
+         lxqt-config,
+         lxqt-notificationd,
+         lxqt-globalkeys,
+         lxqt-panel,
+         lxqt-policykit,
+         lxqt-qtplugin,
+         lxqt-runner,
+         lxqt-session,
+         pcmanfm-qt
+X ist started by /etc/init.d/xdm. You can enable it with "systemctl enable xdm.service", but it should be enabled by default anyway.
+But maybe you have to set the default target to "graphical" or "runlevel5". Use "systemctl get-default" to see the current setting and run "systemctl set-default graphical.target" to set it accordingly.
+Or use YaST->System->Services Manager.

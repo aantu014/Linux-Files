@@ -1,0 +1,26 @@
+﻿NetworkManager
+
+ark
+Lightdm
+lximage-qt
+lxqt-about
+lxqt-config
+lxqt-globalkeys
+lxqt-notificationd
+lxqt-panel
+lxqt-policykit 
+lxqt-qtplugin
+lxqt-runner
+lxqt-session
+lxqt-themes
+Pcmanfm-qt
+openbox
+xf86-video-fbdev
+xf86-input-libinput
+zypper --no-recommends xorg-x11-server
+xterm
+yast2-control-center-qt
+
+X ist started by /etc/init.d/xdm. You can enable it with "systemctl enable xdm.service", but it should be enabled by default anyway.
+But maybe you have to set the default target to "graphical" or "runlevel5". Use "systemctl get-default" to see the current setting and run "systemctl set-default graphical.target" to set it accordingly.
+Or use YaST->System->Services Manager.
