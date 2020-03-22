@@ -1,0 +1,15 @@
+Beginner tips:
+-Use a separate partition for your home-directory. If  home is btrfs and on / a snapshot rollback will also delete altered files in home.
+-always use "zypper dup" - there is no other reliable way to upgrade, especially in a graphical way. To be super safe, do it in TTY or 
+   with "screen" or "tmux" (if your graphical environment crashes, the update process continues)
+- zypper up has no function in TW at the moment
+
+- Don't be afraid to roll back to older snapshots (snapper rollback). If new updates breaks your favourite application, roll back and 
+  wait a week or two. Things get fixed pretty fast in TW
+- regular backups
+- combine regular backups with regular zypper dups.
+- if you break your system beyond snapper rollback, you do not need to completly reinstall. Use a TW iso image on an usb key and use the 
+  boot-option "upgrade" to repair your installation
+- Opensuse has a Wiki which is pretty good. No Arch way of pretty good, but most of the common problems can be solved with it.
+- If you want to have a really conservative update policiy, consider the tool tumbleweed-cli and watch 
+  http://review.tumbleweed.boombatower.com/ . Pick only the most stable new tumbleweed snapshots.
