@@ -1,6 +1,5 @@
-﻿NetworkManager
-
-ark
+//During Installation
+NetworkManager
 Lightdm
 lximage-qt
 lxqt-about
