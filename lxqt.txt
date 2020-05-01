@@ -1,4 +1,5 @@
-﻿NetworkManager
+//During Installation
+NetworkManager
 NetworkManager-applet
 ark
 Lightdm
