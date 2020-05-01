@@ -1,0 +1,15 @@
+# This defines a bare minimum Xfce desktop used, for example, as
+# base for the openSUSE Rescue CD
+Requires:       thunar
+Requires:       thunar-volman
+Requires:       xfce4-appfinder
+Requires:       xfce4-notifyd
+Requires:       xfce4-panel
+Requires:       xfce4-power-manager
+Requires:       xfce4-session
+Requires:       xfce4-settings
+Requires:       xfconf
+Requires:       xfdesktop
+Requires:       xfwm4  
+Recommends:     pavucontrol
+Recommends:     xfce4-pulseaudio-plugin
