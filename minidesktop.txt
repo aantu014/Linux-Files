@@ -17,7 +17,7 @@ xfwm4
 xf86-video-fbdev
 xf86-input-libinput
 zypper install --no-recommends xorg-x11-server
-xterm
+qterminal
 yast2-control-center-qt
 
 systemctl start display-manager  or
