@@ -8,6 +8,7 @@ Requires:       xfce4-panel
 Requires:       xfce4-power-manager
 Requires:       xfce4-session
 Requires:       xfce4-settings
+Requires:       xfce4-terminal
 Requires:       xfconf
 Requires:       xfdesktop
 Requires:       xfwm4  
