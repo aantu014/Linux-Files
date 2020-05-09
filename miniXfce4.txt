@@ -6,13 +6,13 @@ Requires:       xfce4-terminal
 Requires:       xfwm4 
 Requires:       xfce4-appfinder
 Requires:       xfce4-notifyd
-Requires:       xfce4-panel
 Requires:       xfce4-power-manager
+Requires:       thunar
+Requires:       thunar-volman
+Requires:       xfce4-panel
 Requires:       xfce4-settings
 Requires:       xfconf
 Requires:       xfdesktop
 Requires:       xfce4-session
-Requires:       thunar
-Requires:       thunar-volman
 Recommends:     pavucontrol
 Recommends:     xfce4-pulseaudio-plugin
