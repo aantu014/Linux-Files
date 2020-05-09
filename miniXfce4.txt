@@ -1,27 +1,15 @@
 # This defines a bare minimum Xfce desktop used, for example, as
 # base for the openSUSE Rescue CD
 
-Requires:       Lightdm
-Requires:       xfce4-terminal
-Requires:       xfwm4 
-Requires:       xfce4-appfinder
-Requires:       xfce4-notifyd
-Requires:       xfce4-power-manager
-Requires:       thunar
-Requires:       thunar-volman
-Requires:       xfce4-panel
-Requires:       xfce4-settings
-Requires:       xfconf
-Requires:       xfdesktop
-Requires:       xfce4-session
-Recommends:     pavucontrol
-Recommends:     xfce4-pulseaudio-plugin
 
-xf86-video-fbdev
-xf86-input-libinput
+zypper install sudo vim firefox pulseaudio
+
+zypper install --no-recommends xf86-video-fbdev xf86-input-libinput Lightdm xfce4-terminal xfwm4 xfce4-appfinder 
+xfce4-notifyd xfce4-power-manager thunar thunar-volman xfce4-panel xfce4-settings xfconf xfdesktop xfce4-session  
+xfce4-pulseaudio-plugin mugshot
+
 //zypper install --no-recommends xorg-x11-server
 
-yast2-control-center-qt
 
 systemctl start display-manager  or
 
