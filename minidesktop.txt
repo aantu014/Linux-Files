@@ -16,7 +16,7 @@ Pcmanfm-qt
 xfwm4
 xf86-video-fbdev
 xf86-input-libinput
-zypper install --no-recommends xorg-x11-server
+//zypper install --no-recommends xorg-x11-server
 qterminal
 yast2-control-center-qt
 
