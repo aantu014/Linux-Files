@@ -1,20 +1,22 @@
 //During Installation
 NetworkManager
 Lightdm
+Pcmanfm-qt
 qterminal
 xfwm4
+lxqt-runner
 lximage-qt
-lxqt-about
-lxqt-config
+lxqt-themes
 lxqt-globalkeys
 lxqt-notificationd
 lxqt-panel
-lxqt-policykit 
+//lxqt-policykit 
 lxqt-qtplugin
-lxqt-runner
+lxqt-about
+lxqt-config
 lxqt-session
-lxqt-themes
-Pcmanfm-qt
+
+
 
 xf86-video-fbdev
 xf86-input-libinput
