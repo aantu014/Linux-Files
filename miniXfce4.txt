@@ -16,3 +16,10 @@ systemctl start display-manager  or
 X ist started by /etc/init.d/xdm. You can enable it with "systemctl enable xdm.service", but it should be enabled by default anyway.
 But maybe you have to set the default target to "graphical" or "runlevel5". Use "systemctl get-default" to see the current setting and run "systemctl set-default graphical.target" to set it accordingly.
 Or use YaST->System->Services Manager.
+
+
+zypper ar -cfp 90 http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Essentials packman-essentials
+zypper dup --from packman-essentials --allow-vendor-change
+zypper in vlc-codecs libxine2-codecs
+
+zypper install --allow-vendor-change ffmpeg lame gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-ugly-orig-addon gstreamer-plugins-libav libavdevice56 libavdevice58 libdvdcss2 vlc-codecs
