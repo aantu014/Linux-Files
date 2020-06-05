@@ -4,9 +4,9 @@
 
 zypper install sudo vim firefox pulseaudio xfce4-pulseaudio-plugin NetworkManager-applet tlp
 
-zypper install --no-recommends xf86-video-fbdev xf86-input-libinput Lightdm xfce4-terminal xfwm4 xfce4-appfinder 
+zypper install xf86-video-fbdev xf86-input-libinput Lightdm xfce4-terminal xfwm4 xfce4-appfinder 
 xfce4-notifyd xfce4-power-manager thunar thunar-volman xfce4-panel xfce4-settings xfconf xfdesktop xfce4-session  
-mugshot xfce4-screenshooter
+mugshot xfce4-screenshooter noto-sans-cjk noto-sans-emoji
 
 //zypper install --no-recommends xorg-x11-server
 
