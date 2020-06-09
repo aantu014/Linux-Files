@@ -1,6 +1,8 @@
-ls /sys/class/backlight/  ##Get graphics card model.
+##Get graphics card model.
+ls /sys/class/backlight/ 
 
-vi /etc/udev/rules.d/backlight.rules ##Allow users in the video group to change the brightness.
+##Allow users in the video group to change the brightness.
+vi /etc/udev/rules.d/backlight.rules 
 
 ##Add these file for KERNEL enter your graphics model. Mines is intel_backlight. 
 ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness"
