@@ -13,3 +13,4 @@ Beginner tips:
 - Opensuse has a Wiki which is pretty good. No Arch way of pretty good, but most of the common problems can be solved with it.
 - If you want to have a really conservative update policiy, consider the tool tumbleweed-cli and watch 
   http://review.tumbleweed.boombatower.com/ . Pick only the most stable new tumbleweed snapshots.
+- If snapper not working because of .snapshot not in btrfs go to terminal and type sudo mount | grep snap
