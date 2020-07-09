@@ -1,0 +1,182 @@
+Internet check:
+
+	ip a
+
+Connect to Wi-Fi at install:
+
+	wifi-menu
+
+Network Time Protocol sync:
+	
+	timedatectl set-ntp true
+
+Sync repositories  install latest keyring
+	
+	pacman -Syy
+	pacman -S archlinux-keyring
+
+Disk partitioning:
+	
+	cfdisk/[disk name]
+	
+	Mount point 	Partition 		Partition type 		Bootable flag 	Size
+	/boot		/dev/sda1		EFI System Partition	Yes		512 MiB
+	[SWAP]		/dev/sda2		Linux swap		No		1   GiB
+	/		/dev/sda3		Linux (BTRFS)		No		30  GiB
+	/home		/dev/sda4		Linux (EXT4)		No		192 GiB
+
+Format EFI and Root partitions:
+	
+	mkfs.fat -F32 /dev/sda1
+	mkswap /dev/sda2
+	swapon /dev/sda2
+	mkfs.btrfs -L arch /dev/sda3
+	mkfs.ext4 -L home /dev/sda4
+
+Mount partitions and subvolume creation:
+
+	mount /dev/sda3 /mnt
+	cd /mnt
+	btrfs subvolume create _active
+	btrfs subvolume create _active/rootvol
+	btrfs subvolume create _active/tmp
+	btrfs subvolume create _snapshots
+	
+	cd
+	umount /mnt
+	mount -o subvol=_active/rootvol /dev/sda3 /mnt
+	mkdir /mnt/{home,tmp,boot}
+	mount -o subvol=_active/tmp /dev/sda3 /mnt/tmp
+	mount /dev/sda1 /mnt/boot
+	mount /dev/sda4 /mnt/home
+
+Base install:
+
+	pacstrap /mnt base linux-lts linux-firmware linux-lts-headers btrfs-progs vim sudo networkmanager
+
+Generate the FSTAB file:
+
+	genfstab -U /mnt >> /mnt/etc/fstab
+
+Enter the installation
+
+	arch-chroot /mnt
+
+Localization (replace accordingly to your Timezone):
+
+	ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+	hwclock --systohc
+	vim /etc/locale.gen (uncomment the locale of your choice)
+	locale-gen
+	echo "LANG=your locale here" >> /etc/locale.conf
+
+Hostname and Hosts file:
+
+	vim /etc/hostname (enter a name of your choice)
+	vim /etc/hosts
+	127.0.0.1 localhost
+	::1       localhost
+	127.0.1.1 hostname.localdomain hostname (replace with your hostname)
+
+Root password:
+
+	passwd
+
+Modify mkinitcpio.conf to add and btrfs:
+		
+	vim /etc/mkinitcpio.conf
+	HOOKS=(base udev autodetect modconf block encrypt btrfs filesystems keyboard)
+
+Exeucte mkinitcpio
+
+	mkinitcpio -p linux-lts
+
+systemd-boot install:
+
+	bootctl install
+
+Edit the loader.conf file in the /boot/loader directory:
+
+	vim /boot/loader/loader.conf
+
+Edit the loader.conf file:
+	
+	timeout 3
+	#console-mode keep
+	default arch-*
+
+Copy the arch.conf file to the  entries directory:
+	
+	cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/
+
+Find /dev/sda3 root partition UUID
+	
+	blkid -s PARTUUID -o value /dev/sda3
+
+Edit the details for the arch.conf file:
+
+	vim /boot/loader/entries/arch.conf
+
+	title Arch Linux
+	linux /vmlinuz-linux-lts
+	initrd /initramfs-linux-lts.img
+	options root=LABEL=arch rw rootflags=subvol=_active/rootvol
+	
+	#OR options root=PARTUUID=123 rw rootflags=subvol=_active/rootvol
+	## Replce 123 with UUID for sda3
+
+Update bootloader
+	
+	bootctl update
+
+Add user:
+
+	useradd -mG wheel username (replace with yours)
+
+Create password for the user:
+
+	passwd username (replace with yours)
+
+Give the user Sudo priviledges:
+
+	visudo
+	uncomment the %wheel all=(all) all
+
+Return to the installer, unmount all partitions and reboot:
+
+	exit
+	umount -a
+	reboot
+
+Check for internet:
+
+	ip a
+
+If on Wi-Fi connect with:
+
+	nmtui
+
+Graphics card drivers for Intel, AMD and Nvidia cards:
+
+	sudo pacman -S xf86-video-intl
+	sudo pacman -S xf86-video-amdgpu
+	sudo pacman -S nvidia nividia-utils
+	sudo pacman -S xf86-video-fbdev(This is for hyper-v)	
+
+Display server:
+
+	sudo pacman -S xorg
+
+Display manager installation and activation:
+
+	sudo pacman -S gdm
+	sudo systemctl enable gdm
+
+Desktop Environment install:
+
+	sudo pacman -S xf86-input-libinput Lightdm xfce4-terminal xfwm4 xfce4-appfinder xfce4-notifyd xfce4-power-manager thunar thunar-volman xfce4-panel xfce4-settings xfconf xfdesktop xfce4-session  mugshot xfce4-screenshooter
+	sudo pacman -S vim firefox pulseaudio xfce4-pulseaudio-plugin NetworkManager-applet
+
+Activate internet for next reboot:
+
+	systemctl enable NetworkManager
