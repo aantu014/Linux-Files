@@ -165,7 +165,7 @@ Graphics card drivers for Intel, AMD and Nvidia cards:
 
 Display server:
 
-	sudo pacman -S xorg
+	sudo pacman -S xorg-server
 
 Display manager installation and activation:
 
