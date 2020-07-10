@@ -169,8 +169,8 @@ Display server:
 
 Display manager installation and activation:
 
-	sudo pacman -S gdm
-	sudo systemctl enable gdm
+	sudo pacman -S xdm
+	sudo systemctl enable xdm
 
 Desktop Environment install:
 
