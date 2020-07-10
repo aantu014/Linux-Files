@@ -13,7 +13,7 @@ zypper install xf86-input-libinput Lightdm xfce4-terminal xfwm4 xfce4-appfinder 
 
 
 //If you have an ssd
-systemctl start fstrim.timer
+systemctl enable fstrim.timer
 
 systemctl start display-manager  or
 
