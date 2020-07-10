@@ -1,0 +1,21 @@
+#
+# /etc/fstab: static file system information
+#
+# <file system> 							<dir>		 <type>  	<options>       																						<dump/pass>
+# /dev/sda3
+LABEL=arch      							/      		 btrfs      rw,noatime,ssd,compress=lzo,space_cache,subvol=/_active/rootvol     									0 0
+
+# /dev/sda1
+UUID=C679-F6A0								/boot  		 vfat       rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro    	0 2
+
+# /dev/sda3
+LABEL=arch      							/tmp   		 btrfs      rw,noatime,ssd,compress=lzo,space_cache,subvol=/_active/tmp 											0 0
+
+# /dev/sda4
+LABEL=home       							/home  		 ext4       rw,noatime,data=ordered        																			0 2
+
+# /dev/sda2
+UUID=04293b56-e2f9-4d3b-aded-6baad666d5bb   none         swap       defaults        																						0 0
+
+# /dev/sda3 LABEL=arch volume
+LABEL=arch      							/mnt/defvol	 btrfs      rw,noatime,ssd,compress=lzo,space_cache     															0 0
