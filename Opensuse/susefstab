@@ -1,0 +1,13 @@
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /                       btrfs  defaults,noatime                     	 	0  0
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /.snapshots             btrfs  subvol=/@/.snapshots,noatime        	 	0  0
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /var                    btrfs  subvol=/@/var,noatime                	 	0  0
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /usr/local              btrfs  subvol=/@/usr/local,noatime          	 	0  0
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /tmp                    btrfs  subvol=/@/tmp,noatime                	 	0  0
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /srv                    btrfs  subvol=/@/srv,noatime               	 	0  0
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /root                   btrfs  subvol=/@/root,noatime               	 	0  0
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /opt                    btrfs  subvol=/@/opt,noatime          	 		0  0
+UUID=0c407c15-6851-4559-9310-6ac2e4444920  /home                   ext4   data=ordered,noatime              		0  2
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /boot/grub2/x86_64-efi  btrfs  subvol=/@/boot/grub2/x86_64-efi,noatime	0  0
+UUID=40ed9796-a142-46f8-96c7-e192796814a9  /boot/grub2/i386-pc     btrfs  subvol=/@/boot/grub2/i386-pc,noatime 		0  0
+UUID=F1FE-C00A                             /boot/efi               vfat   utf8                         		 		0  2
+UUID=37615d22-25a7-4042-b5ab-7f6da0b94a92  swap                    swap   defaults,noatime                     		0  0
