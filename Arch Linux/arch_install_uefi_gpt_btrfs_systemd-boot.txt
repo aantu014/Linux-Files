@@ -2,10 +2,6 @@ Internet check:
 
 	ip a
 
-Connect to Wi-Fi at install:
-
-	wifi-menu
-
 Network Time Protocol sync:
 	
 	timedatectl set-ntp true
