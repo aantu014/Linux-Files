@@ -161,16 +161,16 @@ Graphics card drivers for Intel, AMD and Nvidia cards:
 
 Display server:
 
-	sudo pacman -S xorg-server
+	sudo pacman -Sd xorg-server
 
 Desktop Environment install:
 
-	sudo pacman -S xf86-input-libinput xfce4-terminal xfwm4 xfce4-appfinder xfce4-notifyd xfce4-power-manager thunar thunar-volman xfce4-panel xfce4-settings xfconf xfdesktop xfce4-session  mugshot xfce4-screenshooter
-	sudo pacman -S vim firefox pulseaudio xfce4-pulseaudio-plugin network-manager-applet
+	sudo pacman -Sd xf86-input-libinput xfce4-terminal xfwm4 xfce4-appfinder xfce4-notifyd xfce4-power-manager thunar thunar-volman xfce4-panel xfce4-settings xfconf xfdesktop xfce4-session  mugshot xfce4-screenshooter
+	sudo pacman -Sd vim firefox pulseaudio xfce4-pulseaudio-plugin network-manager-applet
 
 Display manager installation and activation:
 
-	sudo pacman -S sddm
+	sudo pacman -Sd sddm
 	sudo systemctl enable sddm
 
 Enable TRIM for SSD	
