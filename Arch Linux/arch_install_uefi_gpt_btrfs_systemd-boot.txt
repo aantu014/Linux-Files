@@ -158,7 +158,7 @@ If on Wi-Fi connect with:
 
 Graphics card drivers for Intel, AMD and Nvidia cards:
 
-	sudo pacman -S xf86-video-intl
+	sudo pacman -S xf86-video-intel
 	sudo pacman -S xf86-video-amdgpu
 	sudo pacman -S nvidia nividia-utils
 	sudo pacman -S xf86-video-fbdev(This is for hyper-v)	
@@ -170,7 +170,7 @@ Display server:
 Desktop Environment install:
 
 	sudo pacman -S xf86-input-libinput Lightdm xfce4-terminal xfwm4 xfce4-appfinder xfce4-notifyd xfce4-power-manager thunar thunar-volman xfce4-panel xfce4-settings xfconf xfdesktop xfce4-session  mugshot xfce4-screenshooter
-	sudo pacman -S vim firefox pulseaudio xfce4-pulseaudio-plugin NetworkManager-applet
+	sudo pacman -S vim firefox pulseaudio xfce4-pulseaudio-plugin network-manager-applet
 
 Display manager installation and activation:
 
