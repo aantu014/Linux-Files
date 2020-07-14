@@ -28,6 +28,9 @@ fi
 
 ##Remember I'm using intel_backlight. If different graphic card model change it.
 
+##Change permission of file to allow it to execute.
+chmod 744 brightness
+
 ##Now edit .bashrc which is in your home root
 vi /home/chino/.bashrc
 
