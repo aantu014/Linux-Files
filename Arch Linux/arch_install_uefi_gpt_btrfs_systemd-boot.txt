@@ -170,8 +170,8 @@ Desktop Environment install:
 
 Display manager installation and activation:
 
-	sudo pacman -Sd sddm
-	sudo systemctl enable sddm
+	sudo pacman -Sd lightdm lightdm-gtk-greeter
+	sudo systemctl enable lightdm
 
 Enable TRIM for SSD	
 	
