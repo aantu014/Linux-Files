@@ -1,0 +1,10 @@
+##Edit the theme your using for lightdm via gtk-3.0
+vim /usr/share/themes/Adwaita-dark/gtk-3.0/gtk.css
+
+##Add this to make it completety transparent. 
+#screen.lightdm-gtk-greeter * { background: transparent; }
+
+## You can add this and use rgba to select color.
+#screen.lightdm-gtk-greeter * { background: rgba(0, 0, 0, 0.5); }
+
+
