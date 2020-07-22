@@ -1,0 +1,126 @@
+----------- installing Debian through debootstrap with UEFI boot using Arch Linux live CD ----------- 
+1. Boot into live usb and connect to internet
+
+2. partitioning
+cfdisk /dev/sdb
+EF1=500M
+EXT4=14G
+quit
+
+mkfs.vfat -F32 -n EFIBOOT /dev/sdb1
+mkfs.ext4 -L root /dev/sdb2
+3. mount partition
+mount /dev/sdb2 /mnt
+mkdir -p /mnt/boot/efi
+mount /dev/sdb1 /mnt/boot/efi
+
+
+//Choose disro you want jessie will be example
+4. install base system - jessie for example
+debootstrap --variant=minbase --arch amd64 jessie /mnt http://http.debian.net/debian/
+
+5. generate fstab
+genfstab -p -U /mnt > /mnt/etc/fstab
+
+//Might not neccessary to install depending of what your installing
+6. configure apt
+arch-chroot /mnt /bin/bash
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+export LANG=C
+dpkg --add-architecture i386 - if you have 64 bit system
+apt update
+apt install debian-keyring vim
+
+
+//Chnage repos depending on repository
+vim /etc/apt/sources.list
+
+
+deb http://http.debian.net/debian jessie main contrib non-free
+deb-src http://http.debian.net/debian jessie main contrib non-free
+
+
+deb http://security.debian.org jessie-updates main contrib non-free
+deb-src http://security.debian.org jessie-updates main contrib non-free
+
+
+apt update
+7. configuring locale
+apt install locales console-setup
+dpkg-reconfigure locales
+dpkg-reconfigure console-setup
+
+8. clock and time zone
+dpkg-reconfigure tzdata
+
+9. hostname
+echo debserver > /etc/hostname
+
+10. root password and add users - admin user "username" for example
+passwd
+useradd -m -g users -s /bin/bash username
+passwd username
+
+11. install kernel and firmware - for 64 bit system
+apt install init dbus linux-base linux-image-amd64 linux-headers-amd64
+apt install firmware-linux
+
+
+or install
+
+
+apt install firmware-linux-free
+
+
+and if you want
+
+
+apt install ifupdown openssh-server
+
+
+// Might not be neccessary
+12. configure network - dhcp lan for example
+vim /etc/network/interfaces - add this:
+
+
+auto eth0
+allow-hotplug eth0
+iface eth0 inet dhcp
+
+
+
+13. ??????????????
+exit
+
+for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
+sudo chroot /mnt
+grub-install /dev/sdb
+update-grub 
+
+mkdir -p /boot/efi/EFI/boot/
+#cp grubx64.efi to /boot/efi/EFI/boot/
+
+
+
+
+14. NOT install bootloader - EFIStub for uefi systems
+mkdir -p /boot/efi/EFI/debian
+vim /etc/kernel/postinst.d/zz-update-efistub - add this:
+
+
+#!/bin/sh
+cp /vmlinuz /initrd.img /boot/efi/EFI/debian/
+
+
+chmod +x /etc/kernel/postinst.d/zz-update-efistub
+/etc/kernel/postinst.d/zz-update-efistub
+
+
+exit
+        $UUID replace by your / root uuid
+        for example, if your root is /dev/sdb2 , then: blkid /dev/sdb2
+efibootmgr -c -g -L "Debian - EFI stub" -l '\EFI\debian\vmlinuz' -u 'root=UUID=$UUID ro quiet rootfstype=ext4 add_efi_memmap initrd=\\EFI\\debian\\initrd.img'
+
+15. unmount the partitions and reboot
+umount -R /mnt
+reboot
