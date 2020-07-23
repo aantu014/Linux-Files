@@ -62,6 +62,10 @@ useradd -m -g users -s /bin/bash username
 passwd username
 
 11. install kernel and firmware - for 64 bit system
+
+apt search linux-image
+#pick your kenenl
+
 apt install init dbus linux-base linux-image-amd64 linux-headers-amd64
 apt install firmware-linux
 
