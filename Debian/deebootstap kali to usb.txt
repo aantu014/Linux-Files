@@ -89,7 +89,7 @@ iface eth0 inet dhcp
 
 
 
-13. ??????????????
+13. Install grub
 exit
 
 for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
@@ -98,28 +98,8 @@ grub-install /dev/sdb
 update-grub 
 
 mkdir -p /boot/efi/EFI/boot/
-#cp grubx64.efi to /boot/efi/EFI/boot/
-
-
-
-
-14. NOT install bootloader - EFIStub for uefi systems
-mkdir -p /boot/efi/EFI/debian
-vim /etc/kernel/postinst.d/zz-update-efistub - add this:
-
-
-#!/bin/sh
-cp /vmlinuz /initrd.img /boot/efi/EFI/debian/
-
-
-chmod +x /etc/kernel/postinst.d/zz-update-efistub
-/etc/kernel/postinst.d/zz-update-efistub
-
-
+cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/boot/
 exit
-        $UUID replace by your / root uuid
-        for example, if your root is /dev/sdb2 , then: blkid /dev/sdb2
-efibootmgr -c -g -L "Debian - EFI stub" -l '\EFI\debian\vmlinuz' -u 'root=UUID=$UUID ro quiet rootfstype=ext4 add_efi_memmap initrd=\\EFI\\debian\\initrd.img'
 
 15. unmount the partitions and reboot
 umount -R /mnt
