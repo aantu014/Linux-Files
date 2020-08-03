@@ -25,7 +25,8 @@ genfstab -p -U /mnt > /mnt/etc/fstab
 //Might not neccessary to install depending of what your installing
 6. configure apt
 arch-chroot /mnt /bin/bash
-export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export LANG=C
 dpkg --add-architecture i386 - if you have 64 bit system
 apt update
