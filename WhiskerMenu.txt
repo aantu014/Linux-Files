@@ -1,0 +1,21 @@
+vim ~/.config/xfce4/panel/whiskermenu-1.rc
+
+vim ~/.config/gtk-3.0/gtk.css
+
+xfce4-panel -r
+
+#whiskermenu-window {
+		background: rgba(0, 0, 0, 0.9);
+	}
+#whiskermenu-window entry {
+		/*background: transparent;*/
+		background: rgba(0, 0, 0, 1);
+	}
+#whiskermenu-window treeview { 
+		/*background: transparent;*/
+		background: rgba(0, 0, 0, 0);
+	}
+#whiskermenu-window treeview:hover {
+		background-color: #404040;
+		color: #ccc;
+	}
