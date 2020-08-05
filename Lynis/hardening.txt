@@ -1,0 +1,131 @@
+###Default umask in /etc/profile or /etc/profile.d/custom.sh could be more strict 
+if [ $UID -gt 199 ] && [ "`id -gn`" = "`id -un`" ]; then
+    umask 027
+else
+    umask 027
+fi
+
+###Disable drivers like USB storage and blacklist firewire-core
+/etc/modprobe.d/blacklist.conf
+blacklist usb-storage
+blacklist firewire-core
+
+###To decrease the impact of a full /tmp file system, place /tmp on a separated partition
+systemctl enable tmp.mount	#check if enable "df -Ph /tmp"
+
+###Consider running ARP monitoring software
+sudo yum install arpwatch
+sudo vi /etc/sysconfig/arpwatch #change email if neccessary
+sudo systemctl enable arpwatch
+sudo systemctl start arpwatch
+
+###Consider hardening SSH configuration "sudo vi /etc/ssh/sshd_config"
+PermitRootLogin without-password
+X11Forwarding no
+AllowAgentForwarding no
+UseDNS yes
+# "sudo sshd -T" to confirm settings
+sudo systemctl restart sshd
+
+###Add a legal banner to /etc/issue and /etc/ssh/sshd_config, to warn unauthorized users
+
+cat /etc/issue
+
+********************************************************************
+*                                                                  *
+* This system is for the use of authorized users only.  Usage of   *
+* this system may be monitored and recorded by system personnel.   *
+*                                                                  *
+* Anyone using this system expressly consents to such monitoring   *
+* and is advised that if such monitoring reveals possible          *
+* evidence of criminal activity, system personnel may provide the  *
+* evidence from such monitoring to law enforcement officials.      *
+*                                                                  *
+********************************************************************
+
+###Enable process accounting
+sudo yum install psacct
+sudo systemctl enable psacct.service
+sudo systemctl start psacct.service
+#"ac -p" get system info
+
+###One or more sysctl values differ from the scan profile and could be tweaked 
+
+sudo sysctl -a > /tmp/sysctl-defaults.conf
+
+sudo vi /etc/sysctl.d/80-lynis.conf
+kernel.kptr_restrict = 2
+kernel.sysrq = 0
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.all.log_martians = 1
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.default.log_martians = 1
+#net.ipv4.tcp_timestamps = 0
+net.ipv6.conf.all.accept_redirects = 0
+net.ipv6.conf.default.accept_redirects = 0
+
+#Then apply
+sudo sysctl --system
+
+###Harden compilers like restricting access to root user only
+sudo chmod o-rx /usr/bin/gcc
+sudo chmod o-rx /usr/bin/as
+
+###Check iptables rules to see which rules are currently not used
+#use iptables –list –numeric –verbose to display all rules. Check for rules which didn’t get a hit and repeat this process several times 
+#(e.g. in a few weeks). Finally remove any unneeded rules.”
+
+iptables -L -n -v
+
+
+
+###Check DNS configuration for the dns domain name
+vi /etc/hostname
+centos
+
+vi /etc/hosts
+127.0.0.1	 localhost
+::1		 localhost
+127.0.1.1	 centos.localdomain		centos
+
+###Determine if protocol 'dccp' 'sctp' 'rds' 'tipc' is really needed on this system.
+
+vim /etc/modprobe.d/noprotocal
+
+install dccp /bin/true
+install sctp /bin/true
+install rds /bin/true
+install tipc /bin/true
+
+###Copy /etc/fail2ban/jail.conf to jail.local to prevent it being changed by updates
+
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+###Set a password on GRUB boot loader to prevent altering boot configuration (e.g. boot in single user mode without password)
+
+This proccess might be different depening on distro so google it
+
+
+###If not required, consider explicit disabling of core dump in /etc/security/limits.conf file
+
+vim /etc/security/limits.conf
+
+*	hard	core	0
+*	soft	core	0
+
+###Check 143 files in /tmp which are older than 90 days
+
+vim /etc/profile
+
+##Add this
+
+### Specify in days the age of files to target for cleanup ###
+FILE_AGE=15
+ 
+find /tmp -mtime +${FILE_AGE} -type f -exec rm -f {} \;
+find /tmp -type d -empty -delete
+
+###Double check the permissions of home directories as some might be not strict enough.
+
+chmod 750 /home/user
