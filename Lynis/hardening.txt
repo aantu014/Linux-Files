@@ -5,6 +5,10 @@ else
     umask 027
 fi
 
+###Configure minimum & maximum encryption algorithm rounds in /etc/login.defs
+SHA_CRYPT_MIN_ROUNDS 5000
+SHA_CRYPT_MAX_ROUNDS 50000
+
 ###Disable drivers like USB storage and blacklist firewire-core
 /etc/modprobe.d/blacklist.conf
 blacklist usb-storage
