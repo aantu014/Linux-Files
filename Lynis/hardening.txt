@@ -156,3 +156,4 @@ install udf /bin/true
 
 #Disable automounting
 systemctl disable autofs
+systemctl disable udisks2
