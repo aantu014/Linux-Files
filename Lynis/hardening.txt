@@ -140,10 +140,18 @@ find /tmp -type d -empty -delete
 chmod 750 /home/user
 
 ###Enable auditd to collect audit information.
-sudo yum install audit audit-libs
+sudo apt install auditd
 sudo systemctl start auditd
 sudo systemctl enable auditd
 
+###Enable sysstat to collect accounting
+sudo apt install sysstat
+sudo systemctl start sysstat
+sudo systemctl enable sysstat
+
+sudo apt install acct
+sudo systemctl start acct
+sudo systemctl enable acct
                                 ###Additional hardening####
 #Disabling unused filesystems
 vim /etc/modprobe.d/CIS.conf
