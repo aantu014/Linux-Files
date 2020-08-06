@@ -152,6 +152,10 @@ sudo systemctl enable sysstat
 sudo apt install acct
 sudo systemctl start acct
 sudo systemctl enable acct
+
+###Determine if automation tools are present for system management
+sudo apt install ansible
+
                                 ###Additional hardening####
 #Disabling unused filesystems
 vim /etc/modprobe.d/CIS.conf
