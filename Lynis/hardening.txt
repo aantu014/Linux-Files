@@ -31,7 +31,7 @@ UseDNS yes
 # "sudo sshd -T" to confirm settings
 sudo systemctl restart sshd
 
-###Add a legal banner to /etc/issue and /etc/ssh/sshd_config, to warn unauthorized users
+###Add a legal banner to /etc/issue and /etc/issue.net, to warn unauthorized users
 
 cat /etc/issue
 
