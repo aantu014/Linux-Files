@@ -25,18 +25,18 @@ sudo systemctl start arpwatch
 
 ###Consider hardening SSH configuration "sudo vi /etc/ssh/sshd_config"
 Port 22 ##change to diff number
-
 LogLevel VERBOSE
+PermitRootLogin no
+MaxAuthTries 2
+MaxSessions 2
 AllowAgentForwarding no
 AllowTcpForwarding
 X11Forwarding no
-UseDNS no
 Compression no
+TCPKeepAlive no
+UseDNS no
 
-MaxAuthTries 2
-MaxSessions 2
-PermitRootLogin no
-TCPKeepAlive 20
+
 
 # "sudo sshd -T" to confirm settings
 sudo systemctl restart sshd
