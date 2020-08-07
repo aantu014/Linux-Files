@@ -34,6 +34,7 @@ AllowTcpForwarding
 X11Forwarding no
 Compression no
 TCPKeepAlive no
+ClientAliveCountMax
 UseDNS no
 
 
