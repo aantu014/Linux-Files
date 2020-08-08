@@ -40,6 +40,6 @@ iptables -P OUTPUT ACCEPT
 iptables -P INPUT DROP
  
 ### Save iptables and restart the service ###
-cat /etc/sysconfig/iptables &gt;/etc/sysconfig/iptables.old
-iptables-save &gt;/etc/sysconfig/iptables
+cat /etc/sysconfig/iptables > /etc/sysconfig/iptables.old
+iptables-save > /etc/sysconfig/iptables
 service iptables restart
