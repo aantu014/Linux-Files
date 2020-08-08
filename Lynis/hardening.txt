@@ -30,7 +30,7 @@ PermitRootLogin no
 MaxAuthTries 2
 MaxSessions 2
 AllowAgentForwarding no
-AllowTcpForwarding
+AllowTcpForwarding no
 X11Forwarding no
 Compression no
 TCPKeepAlive no
