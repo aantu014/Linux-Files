@@ -40,6 +40,9 @@ iptables -P OUTPUT ACCEPT
 iptables -P INPUT DROP
  
 ### Save iptables and restart the service ###
-cat /etc/sysconfig/iptables > /etc/sysconfig/iptables.old
-iptables-save > /etc/sysconfig/iptables
+Debian/Ubuntu: cat /etc/iptables/rules.v4 > /etc/iptables/rules.v4old
+RHEL/CentOS: cat /etc/sysconfig/iptables > /etc/sysconfig/iptables.old
+
+Debian/Ubuntu: iptables-save > /etc/iptables/rules.v4
+RHEL/CentOS: iptables-save > /etc/sysconfig/iptables
 service iptables restart
