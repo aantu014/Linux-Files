@@ -191,3 +191,9 @@ install udf /bin/true
 #Disable automounting
 systemctl disable autofs
 systemctl disable udisks2
+
+
+
+#Found promiscuous interface
+#Warning this will disable promiscuous which is used by nmap,tcpdump, an IDS, or some other software component
+arpwatch -p
