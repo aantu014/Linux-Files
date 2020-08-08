@@ -1,3 +1,4 @@
+# vi /etc/audit/rules.d/audit.rules
 # This is an example configuration suitable for most systems
 # Before running with this configuration:
 # - Remove or comment items which are not applicable
