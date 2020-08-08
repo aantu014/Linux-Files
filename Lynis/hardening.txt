@@ -197,3 +197,9 @@ systemctl disable udisks2
 #Found promiscuous interface
 #Warning this will disable promiscuous which is used by nmap,tcpdump, an IDS, or some other software component
 arpwatch -p
+
+#All jails in Fail2ban are disabled
+vi /etc/fail2ban/jail.local
+[DEFAULT]
+enabled = true
+
