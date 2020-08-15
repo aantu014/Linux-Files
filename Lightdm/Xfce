@@ -1,0 +1,18 @@
+vim ~/.config/gtk-3.0/gtk.css
+
+#whiskermenu-window {
+		background: rgba(0, 0, 0, 0.9);
+	}
+#whiskermenu-window treeview { 
+		/*background: transparent;*/
+		background: rgba(0, 0, 0, 0);
+	}
+#whiskermenu-window treeview:hover {
+		background-color: #404040;
+		color: #ccc;
+	}
+.xfce4-panel.background {
+		background-color: rgba(0, 0, 0, 0.5); 
+	}
+.thunar .view { background: rgba(0, 0, 0, 0.5); 
+	}
