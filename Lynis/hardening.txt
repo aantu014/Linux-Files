@@ -170,6 +170,12 @@ sudo systemctl enable acct
 ###Determine if automation tools are present for system management
 sudo apt install ansible
 
+###No AIDE database was found, needed for AIDE functionality
+sudo aide --init
+sudo mv /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz
+sudo aide --check
+aide --update //used after update or change and rename aide.db
+
                                 ###Additional hardening####
 #Disabling unused filesystems
 vim /etc/modprobe.d/CIS.conf
