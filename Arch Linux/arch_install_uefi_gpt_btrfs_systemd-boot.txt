@@ -36,13 +36,15 @@ Mount partitions and subvolume creation:
 	btrfs subvolume create _active
 	btrfs subvolume create _active/rootvol
 	btrfs subvolume create _active/tmp
+	btrfs subvolume create _active/var
 	btrfs subvolume create _snapshots
 	
 	cd
 	umount /mnt
 	mount -o subvol=_active/rootvol /dev/sda3 /mnt
-	mkdir /mnt/{home,tmp,boot}
+	mkdir /mnt/{home,tmp,var,boot}
 	mount -o subvol=_active/tmp /dev/sda3 /mnt/tmp
+	mount -o subvol=_active/var /dev/sda3 /mnt/var
 	mount /dev/sda1 /mnt/boot
 	mount /dev/sda4 /mnt/home
 
