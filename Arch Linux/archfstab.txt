@@ -12,6 +12,9 @@ UUID=C679-F6A0                  /boot          vfat     rw,noatime,fmask=0022,dm
 # /dev/sda3
 LABEL=arch                      /tmp           btrfs    rw,noatime,ssd,compress=lzo,space_cache,subvol=/_active/tmp                                              0 0
 
+# /dev/sda3
+LABEL=arch                      /var           btrfs    rw,noatime,ssd,compress=lzo,space_cache,subvol=/_active/var                                              0 0
+
 # /dev/sda4
 LABEL=home                      /home          ext4     rw,noatime,data=ordered                                                                                  0 2
 
