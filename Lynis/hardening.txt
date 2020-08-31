@@ -202,7 +202,12 @@ install hfs /bin/true
 install hfsplus /bin/true
 install udf /bin/true
 
-
+###Additional process hardening
+sudo vim /etc/sysctl.conf
+    
+    fs.suid_dumpable = 0  #Restrict Core Dumps
+    kernel.exec-shield = 1 #Configure Exec Shield
+    kernel.randomize_va_space = 2 #Enable randomized Virtual Memory Region Placement
 
 /tmp nodev nosuid
 /var/tmp nodev nosuid noexec
@@ -224,3 +229,55 @@ vi /etc/fail2ban/jail.local
 [DEFAULT]
 enabled = true
 
+###Enable SELinux
+sudo vim /etc/selinux/config
+SELINUX=enforcing
+
+###Not allow users to reuse the last four passwords
+sudo vim /etc/pam.d/common-password
+
+    auth        sufficient    pam_unix.so likeauth nullok
+    password 	sufficient	 pam_unix.so remember=4 
+   
+###Enforce is strong passwords
+sudo vim /etc/pam.d/system-auth
+    
+    /lib/security/$ISA/pam_cracklib.so retry=3 minlen=8 lcredit=-1 ucredit=-2 dcredit=-2 ocredit=-1
+
+###Lock the account after five failed attempts
+    auth required pam_env.so 
+    auth required pam_faillock.so preauth audit silent deny=5 unlock_time=604800 
+    auth [success=1 default=bad] pam_unix.so 
+    auth [default=die] pam_faillock.so authfail audit deny=5 unlock_time=604800 
+    auth sufficient pam_faillock.so authsucc audit deny=5 unlock_time=604800 
+    auth required pam_deny.so
+    
+sudo vim /etc/pam.d/system-auth
+    auth required pam_env.so 
+    auth required pam_faillock.so preauth audit silent deny=5 unlock_time=604800 
+    auth [success=1 default=bad] pam_unix.so 
+    auth [default=die] pam_faillock.so authfail audit deny=5 unlock_time=604800 
+    auth sufficient pam_faillock.so authsucc audit deny=5 unlock_time=604800 
+    auth required pam_deny.so
+    
+###Password error after five times, only the administrator can unlock the account, unlock the command as follows:
+# /usr/sbin/faillock –user <userlocked> –reset
+
+### set the “password 90 days after the expiration.”
+chage –maxdays 90 <user>
+
+###Restrict access to the su 
+auth required pam_wheel.so use_uid
+
+###Disable the system accounts for non-root users by using the following bash script:
+
+#!/bin/bash 
+for user in `awk -F: '($3 < 500) {print $1 }' /etc/passwd`; do
+if [ $user != "root" ] 
+then 
+/usr/sbin/usermod -L $user 
+if [ $user != "sync" ] && [ $user != "shutdown" ] && [ $user != "halt" ] 
+then /usr/sbin/usermod -s /sbin/nologin $user 
+fi 
+fi 
+done
