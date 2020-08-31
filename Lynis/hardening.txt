@@ -205,9 +205,9 @@ install udf /bin/true
 ###Additional process hardening
 sudo vim /etc/sysctl.conf
     
-    fs.suid_dumpable = 0  #Restrict Core Dumps
-    kernel.exec-shield = 1 #Configure Exec Shield
-    kernel.randomize_va_space = 2 #Enable randomized Virtual Memory Region Placement
+    fs.suid_dumpable=0  #Restrict Core Dumps
+    kernel.exec-shield=1 #Configure Exec Shield
+    kernel.randomize_va_space=2 #Enable randomized Virtual Memory Region Placement
 
 /tmp nodev nosuid
 /var/tmp nodev nosuid noexec
