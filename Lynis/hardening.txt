@@ -92,6 +92,12 @@ sudo sysctl --system
 sudo chmod o-rx /usr/bin/gcc
 sudo chmod o-rx /usr/bin/as
 
+
+###Check CUPS configuration if it really needs to listen on the network.
+###Disable CUPS if your not using a printer.
+sudo systemctl stop cups
+sudo systemctl disable cups
+
 ###Check iptables rules to see which rules are currently not used
 #use iptables –list –numeric –verbose to display all rules. Check for rules which didn’t get a hit and repeat this process several times 
 #(e.g. in a few weeks). Finally remove any unneeded rules.”
