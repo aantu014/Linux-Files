@@ -183,7 +183,7 @@ aideinit
 
                                 ###Additional hardening####
 #Disabling unused filesystems
-vim /etc/modprobe.d/CIS.conf
+vim /etc/modprobe.d/blacklist.conf
 
 install cramfs /bin/true
 install freevxfs /bin/true
