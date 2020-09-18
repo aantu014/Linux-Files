@@ -24,7 +24,7 @@ sudo systemctl enable arpwatch
 sudo systemctl start arpwatch
 
 ###Consider hardening SSH configuration "sudo vi /etc/ssh/sshd_config"
-Port 22 ##change to diff number
+Port 2222 ##change to diff number
 LogLevel VERBOSE
 PermitRootLogin no
 MaxAuthTries 2
@@ -37,6 +37,8 @@ TCPKeepAlive no
 ClientAliveCountMax 2
 UseDNS no
 
+$ sudo firewall-cmd --permanent --zone=public --add-port=2222/tcp
+$ sudo firewall-cmd --reload
 
 
 # "sudo sshd -T" to confirm settings
