@@ -1,0 +1,3 @@
+#!/bin/sh
+## This goes in /usr/local/etc/lightdm/
+xrandr -s 1368x768
