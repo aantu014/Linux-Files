@@ -6,6 +6,12 @@ ifconfig_em0="inet 10.0.0.242 netmask 255.255.255.0"
 defaultrouter="10.0.0.1"
 sshd_enable="YES"
 ntpd_enable="YES"
+nginx_enable="YES"
+firewall_enable="YES"
+firewall_type="workstation"
+firewall_myservices="22/tcp 80/tcp"
+firewall_allowservices="any"
+
 # Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
 dumpdev="NO"
 dbus_enable="yes"
