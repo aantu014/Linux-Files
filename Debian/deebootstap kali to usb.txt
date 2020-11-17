@@ -99,6 +99,8 @@ exit
 
 ### for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
 for i in /proc /sys /dev /run; do sudo mount --rbind /$i /mnt/$i ; done
+echo 'nameserver 1.1.1.1' | sudo tee -a /etc/resolv.conf
+
 sudo chroot /mnt
 grub-install /dev/sdb
 update-grub 
