@@ -97,7 +97,8 @@ iface eth0 inet dhcp
 13. Install grub
 exit
 
-for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
+### for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
+for i in /proc /sys /dev /run; do sudo mount --rbind /$i /mnt/$i ; done
 sudo chroot /mnt
 grub-install /dev/sdb
 update-grub 
