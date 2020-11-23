@@ -110,7 +110,7 @@ iptables -L -n -v
 
 ###Check DNS configuration for the dns domain name
 vi /etc/hostname
-centos
+centos.localdomain
 
 vi /etc/hosts
 127.0.0.1	 localhost
