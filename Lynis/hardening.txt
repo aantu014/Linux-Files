@@ -119,7 +119,7 @@ vi /etc/hosts
 
 ###Determine if protocol 'dccp' 'sctp' 'rds' 'tipc' is really needed on this system.
 
-vim /etc/modprobe.d/noprotocal
+vim /etc/modprobe.d/blacklist.conf
 
 install dccp /bin/true
 install sctp /bin/true
