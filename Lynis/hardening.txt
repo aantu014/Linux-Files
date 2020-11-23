@@ -293,6 +293,8 @@ done
 
 #Install Apache mod_evasive to guard webserver against DoS/brute force attempts [HTTP-6640]
 #Install Apache modsecurity to guard webserver against web application attacks [HTTP-6643] 
+
+sudo dnf install mod_security
 dnf install https://pkgs.dyn.su/el8/base/x86_64/raven-release-1.0-1.el8.noarch.rpm
 dnf --enablerepo=raven-extras install mod_evasive
 ls -l /etc/httpd/conf.d
