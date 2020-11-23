@@ -10,6 +10,10 @@ fi
 SHA_CRYPT_MIN_ROUNDS 5000
 SHA_CRYPT_MAX_ROUNDS 50000
 
+###Configure minimum & maximum password age in /etc/login.defs
+PASS_MAX_DAYS   9999
+PASS_MIN_DAYS   1
+
 ###Disable drivers like USB storage and blacklist firewire-core
 /etc/modprobe.d/blacklist.conf
 blacklist usb-storage
