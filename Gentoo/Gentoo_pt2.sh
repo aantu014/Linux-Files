@@ -45,8 +45,11 @@ rc-update add net.wlp1s0 default
 
 cd /
 emerge -q sys-boot/grub:2
-grub-install --target=x86_64-efi --efi-directory=/boot
+grub-install --target=x86_64-efi --efi-directory==/boot/efi
+#If installing to usb or external hardrive comment above line and uncomment the line below.
+#grub-install --efi-directory=/boot/efi --target=x86_64-efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
+
 
 wget https://raw.githubusercontent.com/aantu014/Linux-Files/master/Gentoo/genfstab
 chmod +x genfstab
