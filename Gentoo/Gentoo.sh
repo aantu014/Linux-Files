@@ -1,9 +1,12 @@
+#Get ip and netowrk interface
+##ifconfig##
+
+# Set up networking
+# net-setup wlp1s0
+
 #If boot from usb install and have extra pc run
 #/etc/init.d/sshd start##
 ##passwd##
-
-#Get ip
-##ifconfig##
 
 #From other pc replace ip with your own
 ##ssh root@10.0.0.10##
