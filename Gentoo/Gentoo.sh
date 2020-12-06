@@ -42,6 +42,7 @@ mkdir /mnt/gentoo/usr
 mkdir /mnt/gentoo/var
 mkdir /mnt/gentoo/tmp
 mkdir /mnt/gentoo/home
+mkdir /mnt/gentoo/boot
 mkdir /mnt/gentoo/boot/efi
 
 mount /dev/sda4 /mnt/gentoo/usr
