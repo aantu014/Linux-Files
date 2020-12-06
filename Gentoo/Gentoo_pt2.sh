@@ -53,3 +53,4 @@ chmod +x genfstab
 ./genfstab -p -U . >> /etc/fstab
 
 emerge -q app-admin/sudo
+passwd
