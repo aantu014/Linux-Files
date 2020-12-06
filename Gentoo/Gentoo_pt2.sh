@@ -1,3 +1,5 @@
+## 
+
 source /etc/profile
 export PS1="(chroot) ${PS1}"
 
@@ -32,13 +34,13 @@ echo "Gentoo" > /etc/conf.d/hostname
 #Get your network interfaces.
 # ifconfig | grep "flag"
 
-echo 'config_enp0s3="dhcp"' > /etc/conf.d/net
+echo 'config_wlp1s0="dhcp"' > /etc/conf.d/net
 
 emerge -q net-misc/dhcpcd
 
 cd /etc/init.d
-ln -s net.lo net.enp0s3
-rc-update add net.enp0s3 default
+ln -s net.lo net.wlp1s0
+rc-update add net.wlp1s0 default
 
 
 cd /
