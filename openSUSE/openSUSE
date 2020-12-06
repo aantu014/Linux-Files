@@ -1,4 +1,4 @@
-﻿zypper install --no-recommends vim xinit xf86-input-libinput pavucontrol libreoffice-writer MozillaFirefox xfce4-pulseaudio-plugin xfce4-power-manager-plugin xfce4-panel xfconf xfce4-terminal thunar xfdesktop xfce4-session xfwm4 lightdm
+﻿zypper install --no-recommends vim xinit xf86-input-libinput pavucontrol libreoffice-writer MozillaFirefox xfce4-pulseaudio-plugin xfce4-power-manager-plugin xfce4-panel xfconf xfce4-terminal thunar xfdesktop xfce4-session xfwm4 lightdm gvfs-backends
 
 
 systemctl set-default graphical.target
