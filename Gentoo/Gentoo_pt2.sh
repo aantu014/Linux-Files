@@ -1,4 +1,4 @@
-## 
+## You can run   sed -i 's/s.wlp1s0/enps1/g' Gentoo_pt1.sh   to pick the correct NIC. Replace enps1 with your NIC.
 
 source /etc/profile
 export PS1="(chroot) ${PS1}"
