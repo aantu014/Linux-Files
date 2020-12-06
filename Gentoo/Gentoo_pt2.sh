@@ -18,7 +18,7 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 eselect locale set 4
 
-emerge -q --autounmask-continue sys-kernel/gentoo-sources sys-kernel/genkernel
+env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 
 
 emerge -q --autounmask-continue sys-kernel/gentoo-sources sys-kernel/genkernel
