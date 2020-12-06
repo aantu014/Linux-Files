@@ -34,14 +34,16 @@ mkfs.ext4 -L genhome /dev/sda7
 
 
 mkdir /mnt/gentoo/
+
+
+
+mount /dev/sda3 /mnt/gentoo/
 mkdir /mnt/gentoo/usr
 mkdir /mnt/gentoo/var
 mkdir /mnt/gentoo/tmp
 mkdir /mnt/gentoo/home
 mkdir /mnt/gentoo/boot/efi
 
-
-mount /dev/sda3 /mnt/gentoo/
 mount /dev/sda4 /mnt/gentoo/usr
 mount /dev/sda5 /mnt/gentoo/var
 mount /dev/sda6 /mnt/gentoo/tmp
