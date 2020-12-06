@@ -1,0 +1,20 @@
+﻿zypper install --no-recommends vim xinit xf86-input-libinput pavucontrol libreoffice-writer MozillaFirefox xfce4-pulseaudio-plugin xfce4-power-manager-plugin xfce4-panel xfconf xfce4-terminal thunar xfdesktop xfce4-session xfwm4 lightdm
+
+
+systemctl set-default graphical.target
+
+
+# Go to https://brave.com/linux/#opensuse-15 to install BraveBrower.
+# Then run sudo sed -i 's/autorefresh=0/autorefresh=1/g' /etc/zypp/repos.d/brave-browser.repo
+#This will allow you to update brave browser.
+
+
+#Extrall packages you may want to install
+# NetworkManager-applet  Notepadqq tlp  xfce4-notifyd thunar-volman 
+# mugshot xfce4-screenshooter noto-sans-cjk noto-sans-emoji indic-fonts
+#
+#Pick one depending on graphic cards
+# xf86-video-intel   xf86-video-amdgpu   xf86-video-nv   xf86-video-fbdev
+
+#Firfox cant play html5 video so go to this website
+#https://en.opensuse.org/SDB:Firefox_MP4/H.264_Video_Support 
