@@ -12,6 +12,7 @@
 ##ssh root@10.0.0.10##
 
 #cfdisk /dev/sda
+#You can run   sed -i 's/sda/sdc/g' Gentoo_pt1.sh   to replce with disck you want to install on. Replace sdc witht the device you want.
 
 #Device                         Start                End            Sectors          Size Type
 
