@@ -33,11 +33,11 @@ mkfs.ext4 -L gentmp /dev/sda6
 mkfs.ext4 -L genhome /dev/sda7
 
 
-mkdir /dev/sda3 /mnt/gentoo/
-mkdir /dev/sda4 /mnt/gentoo/usr
-mkdir /dev/sda5 /mnt/gentoo/var
-mkdir /dev/sda6 /mnt/gentoo/tmp
-mkdir /dev/sda7 /mnt/gentoo/home
+mkdir /mnt/gentoo/
+mkdir /mnt/gentoo/usr
+mkdir /mnt/gentoo/var
+mkdir /mnt/gentoo/tmp
+mkdir /mnt/gentoo/home
 mkdir /mnt/gentoo/boot/efi
 
 
