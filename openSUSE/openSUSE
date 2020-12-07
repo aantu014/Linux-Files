@@ -1,9 +1,13 @@
 zypper install --no-recommends vim xinit xf86-input-libinput pavucontrol libreoffice-writer MozillaFirefox xfce4-pulseaudio-plugin xfce4-power-manager-plugin xfce4-panel xfconf xfce4-terminal thunar xfdesktop xfce4-session xfwm4 lightdm gvfs-backends
 zypper remove snapper-zypp-plugin
+
 sed -i 's/multiversion.kernels = latest,latest-1,running/multiversion.kernels = latest,running/g' /etc/zypp/zypp.conf
 sed -i 's/USE_SNAPPER="yes"/USE_SNAPPER="no"/g' /etc/sysconfig/yast2
-systemctl set-default graphical.target
 
+echo "blacklist pcspkr" | tee /etc/modprobe.d/nobeep.conf
+
+systemctl mask hibernate.target hybrid-sleep.target
+systemctl set-default graphical.target
 
 # Go to https://brave.com/linux/#opensuse-15 to install BraveBrower.
 # Then run sudo sed -i 's/autorefresh=0/autorefresh=1/g' /etc/zypp/repos.d/brave-browser.repo
