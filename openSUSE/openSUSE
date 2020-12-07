@@ -11,7 +11,7 @@ systemctl set-default graphical.target
 
 
 #Extrall packages you may want to install
-# NetworkManager-applet  Notepadqq tlp  xfce4-notifyd thunar-volman 
+# NetworkManager-applet  Notepadqq tlp  xfce4-notifyd thunar-volman  neofetch
 # mugshot xfce4-screenshooter noto-sans-cjk noto-sans-emoji indic-fonts
 #
 #Pick one depending on graphic cards
