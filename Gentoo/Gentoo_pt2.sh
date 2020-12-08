@@ -29,7 +29,9 @@ make menuconfig
 make && make modules_install && make install
 genkernel --install --kernel-config=/usr/src/linux/.config initramfs
 
-echo "Gentoo" > /etc/conf.d/hostname
+cat <<EOF> /etc/conf.d/hostname
+hostname="Gentoo"
+EOF
 
 #Get your network interfaces.
 # ifconfig | grep "flag"
