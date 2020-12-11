@@ -58,4 +58,5 @@ chmod +x genfstab
 ./genfstab -p -U . >> /etc/fstab
 
 emerge -q app-admin/sudo
+emerge -q x11-drivers/xf86-input-libinput
 passwd
