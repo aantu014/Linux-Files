@@ -59,4 +59,5 @@ chmod +x genfstab
 
 emerge -q app-admin/sudo
 emerge -q x11-drivers/xf86-input-libinput
+emerge -q net-misc/networkmanager
 passwd
