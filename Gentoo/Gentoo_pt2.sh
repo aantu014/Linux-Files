@@ -1,5 +1,5 @@
 ## You can run   sed -i 's/wlp1s0/enp0s3/g' Gentoo_pt2.sh   to pick the correct NIC. Replace enps1 with your NIC.
-
+## eth0 wlan0
 source /etc/profile
 export PS1="(chroot) ${PS1}"
 
