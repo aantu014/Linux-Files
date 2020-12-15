@@ -59,3 +59,4 @@ test -s ~/.alias && . ~/.alias || true
 brightness="/home/$USER/Scripts/brightness"
 alias bri="\$brightness"
 EOF
+# Remeber to reboot and enjoy ;)
