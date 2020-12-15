@@ -60,7 +60,7 @@ chmod +x genfstab
 emerge -q app-admin/sudo
 emerge -q x11-drivers/xf86-input-libinput
 emerge -q media-sound/alsa-util
-#emerge -q x11-misc/xclip
+emerge -q x11-misc/xclip
 emerge -q net-misc/networkmanager
 
 for x in /etc/runlevels/default/net.* ; do rc-update del $(basename $x) default ; rc-service --ifstarted $(basename $x) stop; done
