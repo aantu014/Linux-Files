@@ -1,0 +1,61 @@
+##Get graphics card model.
+gcm=$(ls /sys/class/backlight/)
+
+echo "Your graphics card is $gcm"
+
+sudo chmod 666 /sys/class/backlight/$gcm/brightness
+
+##Allow users in the video group to change the brightness.
+sudo rm /etc/udev/rules.d/backlight.rules
+cat << EOF | sudo tee -a /etc/udev/rules.d/backlight.rules
+ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="$gcm", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness"
+ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="$gcm", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
+EOF
+
+sudo usermod -aG video $USER  ##Add user to video group
+
+mkdir /home/$USER/Scripts/
+
+#Creates Script
+cat <<EOF> /home/$USER/Scripts/brightness
+#!/bin/bash
+
+lvl=\${1?Error: no name given}
+int="^[0-9]+\$"
+
+if ! [[ \$lvl =~ \$int ]] ; then
+    echo "error: Not a number" >&2; exit 1
+else
+    echo \$lvl | tee /sys/class/backlight/$gcm/brightness
+fi
+EOF
+
+chmod +x /home/$USER/Scripts/brightness
+
+### This will allow you to execute the file as a command called "bri"
+cat <<EOF> /home/$USER/.bashrc
+# /etc/skel/.bashrc
+#
+# This file is sourced by all *interactive* bash shells on startup,
+# including some apparently interactive shells such as scp and rcp
+# that can't tolerate any output.  So make sure this doesn't display
+# anything or bad things will happen !
+
+
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ \$- != *i* ]] ; then
+        # Shell is non-interactive.  Be done now!
+	return
+fi
+
+
+# Put your fun stuff here.
+history -c
+history -w
+test -s ~/.alias && . ~/.alias || true
+
+brightness="/home/$USER/Scripts/brightness"
+alias bri="\$brightness"
+EOF
