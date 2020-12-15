@@ -36,13 +36,13 @@ EOF
 #Get your network interfaces.
 # ifconfig | grep "flag"
 
-echo 'config_wlp1s0="dhcp"' > /etc/conf.d/net
+#echo 'config_wlp1s0="dhcp"' > /etc/conf.d/net
 
 emerge -q net-misc/dhcpcd
 
-cd /etc/init.d
-ln -s net.lo net.wlp1s0
-rc-update add net.wlp1s0 default
+#cd /etc/init.d
+#ln -s net.lo net.wlp1s0
+#rc-update add net.wlp1s0 default
 
 
 cd /
