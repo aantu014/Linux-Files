@@ -1,5 +1,5 @@
 # To copy and paste in terminal ctrl+shift+ v or c
-emerge -q x11-terms/st x11-misc/dmenu x11-wm/dwm
+emerge -q x11-terms/st x11-misc/dmenu x11-wm/dwm media-gfx/sxiv
 
 
 echo "exec dbus-launch --sh-syntax --exit-with-session dwm" > ~/.xinitrc
