@@ -47,9 +47,9 @@ emerge -q net-misc/dhcpcd
 
 cd /
 emerge -q sys-boot/grub:2
-#grub-install --target=x86_64-efi --efi-directory==/boot/efi
+grub-install --target=x86_64-efi --efi-directory==/boot/efi
 #If installing to usb or external hardrive comment above line and uncomment the line below.
-grub-install --efi-directory=/boot/efi --target=x86_64-efi --removable
+#grub-install --efi-directory=/boot/efi --target=x86_64-efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
