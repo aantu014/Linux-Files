@@ -21,7 +21,7 @@ cat <<EOF> /home/$USER/Scripts/brightness
 #!/bin/bash
 gcm=\$(ls /sys/class/backlight/)
 
-lvl=\${1?Error: no name given}
+lvl=\${1?Error: no value given}
 int="^[0-9]+\$"
 
 if ! [[ \$lvl =~ \$int ]] ; then
