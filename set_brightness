@@ -19,6 +19,7 @@ mkdir /home/$USER/Scripts/
 #Creates Script
 cat <<EOF> /home/$USER/Scripts/brightness
 #!/bin/bash
+gcm=\$(ls /sys/class/backlight/)
 
 lvl=\${1?Error: no name given}
 int="^[0-9]+\$"
@@ -26,7 +27,7 @@ int="^[0-9]+\$"
 if ! [[ \$lvl =~ \$int ]] ; then
     echo "error: Not a number" >&2; exit 1
 else
-    echo \$lvl | tee /sys/class/backlight/$gcm/brightness
+    echo \$lvl | tee /sys/class/backlight/\$gcm/brightness
 fi
 EOF
 
