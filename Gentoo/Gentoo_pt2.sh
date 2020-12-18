@@ -57,7 +57,7 @@ wget https://raw.githubusercontent.com/aantu014/Linux-Files/master/Gentoo/genfst
 chmod +x genfstab
 ./genfstab -p -U . >> /etc/fstab
 
-#echo "tmpfs   /dev/shm    tmpfs   noexec,nosuid,nodev 0   0" >> /etc/fstab
+#echo "shm                     /dev/shm        tmpfs           nodev,nosuid,noexec     0 0" >> /etc/fstab
 
 emerge -q app-admin/sudo
 emerge -q x11-drivers/xf86-input-libinput
