@@ -14,9 +14,12 @@ printf "-libressl\n" >> /etc/portage/profile/use.stable.mask
 echo "dev-libs/openssl" >> /etc/portage/package.mask
 echo "dev-libs/libressl" >> /etc/portage/package.accept_keywords
 emerge -f libressl
-emerge -C openssl app-editors/nano
+emerge -C openssl
 emerge -1q libressl
 
+
+emerge --deselect app-editors/nano
+emerge --depclean -q
 emerge -q --update --deep --newuse @world
 emerge -q app-editors/vim
 
