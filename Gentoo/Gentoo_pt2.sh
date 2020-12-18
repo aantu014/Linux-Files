@@ -59,7 +59,7 @@ chmod +x genfstab
 
 #echo "shm                     /dev/shm        tmpfs           nodev,nosuid,noexec     0 0" >> /etc/fstab
 
-emerge -q app-admin/sudo x11-drivers/xf86-input-libinput media-sound/alsa-utils net-misc/networkmanager
+emerge -q --autounmask-continue app-admin/sudo x11-drivers/xf86-input-libinput media-sound/alsa-utils net-misc/networkmanager
 
 
 for x in /etc/runlevels/default/net.* ; do rc-update del $(basename $x) default ; rc-service --ifstarted $(basename $x) stop; done
