@@ -29,32 +29,8 @@ make menuconfig
 make && make modules_install && make install
 genkernel --install --kernel-config=/usr/src/linux/.config initramfs
 
-
-
 sed -i -e "s/localhost/Gentoo" /etc/conf.d/hostname
 emerge --noreplace net-misc/netifrc
-printf "config_wlp1s0=\"dhcp\"\n" >> /etc/conf.d/net
-cd /etc/init.d
-ln -s net.lo net.wlp1s0
-rc-update add net.wlp1s0 default
-printf "dhcp enabled\n"
-emerge app-admin/sysklogd
-emerge app-admin/sudo
-rm -rf /etc/sudoers
-cd $scriptdir
-cp sudoers /etc/
-printf "installed sudo and enabled it for wheel group\n"
-rc-update add sysklogd default
-emerge sys-apps/mlocate
-emerge net-misc/dhcpcd
-
-
-
-cat <<EOF> /etc/conf.d/hostname
-hostname="Gentoo"
-EOF
-
-emerge --ask --noreplace net-misc/netifrc
 #Get your network interfaces.
 # ifconfig | grep "flag"
 
