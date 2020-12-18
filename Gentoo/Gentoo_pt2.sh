@@ -33,16 +33,18 @@ cat <<EOF> /etc/conf.d/hostname
 hostname="Gentoo"
 EOF
 
+
+emerge --ask --noreplace net-misc/netifrc
 #Get your network interfaces.
 # ifconfig | grep "flag"
 
-#echo 'config_wlp1s0="dhcp"' > /etc/conf.d/net
+echo 'config_wlp1s0="dhcp"' > /etc/conf.d/net
 
 emerge -q net-misc/dhcpcd
 
-#cd /etc/init.d
-#ln -s net.lo net.wlp1s0
-#rc-update add net.wlp1s0 default
+cd /etc/init.d
+ln -s net.lo net.wlp1s0
+rc-update add net.wlp1s0 default
 
 
 cd /
@@ -59,11 +61,11 @@ chmod +x genfstab
 
 #echo "shm                     /dev/shm        tmpfs           nodev,nosuid,noexec     0 0" >> /etc/fstab
 
-emerge -q --autounmask-continue app-admin/sudo x11-drivers/xf86-input-libinput media-sound/alsa-utils net-misc/networkmanager
+emerge -q --autounmask-continue app-admin/sudo x11-drivers/xf86-input-libinput media-sound/alsa-utils 
+#emerge -q --autounmask-continue net-misc/networkmanager
 
-
-for x in /etc/runlevels/default/net.* ; do rc-update del $(basename $x) default ; rc-service --ifstarted $(basename $x) stop; done
-rc-update del dhcpcd default
-rc-update add NetworkManager default
+#for x in /etc/runlevels/default/net.* ; do rc-update del $(basename $x) default ; rc-service --ifstarted $(basename $x) stop; done
+#rc-update del dhcpcd default
+#rc-update add NetworkManager default
 
 passwd
