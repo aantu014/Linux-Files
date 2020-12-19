@@ -53,7 +53,7 @@ mount /dev/sda7 /mnt/gentoo/home
 mount /dev/sda1 /mnt/gentoo/boot/efi
 
 # Replace with Updated archive link on https://www.gentoo.org/downloads/
-wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20201206T214503Z/stage3-amd64-nomultilib-20201206T214503Z.tar.xz
+wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20201206T214503Z/hardened/stage3-amd64-hardened+nomultilib-20201206T214503Z.tar.xz
 
 mv *.tar.xz /mnt/gentoo/
 
