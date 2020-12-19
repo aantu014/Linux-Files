@@ -22,7 +22,7 @@ emerge --deselect app-editors/nano
 emerge --depclean -q
 emerge -q --update --deep --newuse @world
 emerge -q app-editors/vim
-emerge sys-kernel/linux-firmware
+emerge -q sys-kernel/linux-firmware
 
 #Pick zone replce time zone with yours
 #ls /usr/share/zoneinfo
