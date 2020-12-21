@@ -71,15 +71,15 @@ useradd -mG wheel $username
 passwd $username
 
 
-pacman -Sd xf86-input-libinput xorg-xinit xorg-server firefox neofetch git alsa-utils sxiv nitrogen dmenu
+pacman -Sd xf86-input-libinput xorg-xinit xorg-server firefox neofetch git alsa-utils sxiv nitrogen dmenu sudo fakeroot
 
 cd /opt
 git clone https://aur.archlinux.org/yay-git.git
 chown -R $username:$username ./yay-git
-cd yay-git
 
 
-echo " Type *makepkg -si* then *yay -Syu* and *yay -S doas st dwm* "
+echo "cd into  /opt/yay-git"
+echo " Type *makepkg -si* then *yay -Syu* and *yay -S st dwm* "
 
 su $username
 
