@@ -168,7 +168,7 @@ Display server:
 Desktop Environment install:
 
 	sudo pacman -Sd xf86-input-libinput xfce4-whiskermenu-plugin xfce4-terminal xfwm4 xfce4-notifyd xfce4-power-manager thunar thunar-volman gvfs xfce4-panel xfce4-settings xfconf xfdesktop xfce4-session  mugshot xfce4-screenshooter
-	sudo pacman -Sd vim firefox pulseaudio xfce4-pulseaudio-plugin network-manager-applet noto-fonts-cjk noto-fonts-emoji firefox-i18n-gu-in firefox-i18n-hi-in firefox-i18n-pa-in
+	sudo pacman -Sd vim firefox pulseaudio xfce4-pulseaudio-plugin network-manager-applet noto-fonts-cjk noto-fonts-emoji 
 
 Display manager installation and activation:
 
