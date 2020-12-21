@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ###Localization (replace accordingly to your Timezone):
 
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
