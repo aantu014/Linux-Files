@@ -58,6 +58,6 @@ for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt/arch$i; done
 
 
 #Enter the installation
-arch-chroot /mnt/arch
+chroot /mnt/arch /bin/bash
 
 ##You are now in Arch Enirontment now download second part of script and runit ;)
