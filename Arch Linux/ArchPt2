@@ -1,0 +1,71 @@
+#!/bin/bash
+
+###Localization (replace accordingly to your Timezone):
+
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+hwclock --systohc
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
+echo 'LANG="en_US.UTF-8"' > /etc/locale.conf
+
+###Hostname and Hosts file:
+
+echo "Arch.localdomain" > /etc/hostname
+cat <<EOF> /etc/hosts
+127.0.0.1	 localhost
+::1		 localhost
+127.0.1.1	 Arch.localdomain		Arch
+EOF
+
+###Modify mkinitcpio.conf to add and btrfs:
+		
+vim /etc/mkinitcpio.conf
+
+###HOOKS=(base udev autodetect modconf block filesystems keyboard)###
+
+###Exeucte mkinitcpio
+
+mkinitcpio -p linux-lts
+
+###systemd-boot install:
+
+bootctl --path=/boot install
+
+###Edit the loader.conf file in the /boot/loader directory:
+
+cat <<EOF> /boot/loader/loader.conf
+timeout 3
+#console-mode keep
+default arch-*
+editor no
+EOF
+
+###Copy the arch.conf file to the  entries directory:
+	
+cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/
+
+###Edit the details for the arch.conf file:
+
+cat <<EOF> /boot/loader/entries/arch.conf
+title Arch Linux
+linux /vmlinuz-linux-lts
+initrd /initramfs-linux-lts.img
+options root=LABEL=archroot rw
+EOF
+
+###Update bootloader
+	
+bootctl --path=/boot update
+
+###Root password:
+
+passwd
+
+
+###Add user:
+
+echo "Type username: "
+read username
+
+useradd -mG wheel $username
+passwd $username
