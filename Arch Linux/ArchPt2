@@ -29,7 +29,7 @@ mkinitcpio -p linux-lts
 
 ###systemd-boot install:
 
-bootctl --path=/boot install
+bootctl install
 
 ###Edit the loader.conf file in the /boot/loader directory:
 
