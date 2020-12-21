@@ -73,6 +73,21 @@ passwd $username
 
 pacman -Sd xf86-input-libinput xorg-xinit xorg-server firefox neofetch git alsa-utils sxiv nitrogen dmenu
 
+cd /opt
+git clone https://aur.archlinux.org/yay-git.git
+chown -R $username:$username ./yay-git
+cd yay-git
 
+
+echo " Type *makepkg -si* then *yay -Syu* and *yay -S doas st dwm* "
+
+su $username
+
+
+###To remove a package using yay use the command.
+# yay -Rns package_name
+
+###To clean up all unwanted dependencies on your system, issue the command.
+# yay -Yc
 
 systemctl enable NetworkManager
