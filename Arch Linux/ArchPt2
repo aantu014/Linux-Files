@@ -69,3 +69,6 @@ read username
 
 useradd -mG wheel $username
 passwd $username
+
+
+pacman -Sd xf86-input-libinput xorg-xinit firefox
