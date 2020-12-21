@@ -46,7 +46,7 @@ mount /dev/sda7 /mnt/arch/home
 mount /dev/sda1 /mnt/arch/boot
 
 #Base install:
-pacstrap /mnt/arch systemd pacman linux-lts linux-firmware vim git networkmanager
+pacstrap /mnt/arch systemd-sysvcompat systemd pacman linux-lts linux-firmware vim git networkmanager
 
 #Generate the FSTAB file:
 
