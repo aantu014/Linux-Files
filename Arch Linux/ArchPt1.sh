@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 # Use this to get script to run.
 #https://www.studytonight.com/post/solved-getting-error-while-executing-a-sh-file-binbashm-bad-interpreter
