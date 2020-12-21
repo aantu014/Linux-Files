@@ -38,13 +38,12 @@ mkdir /mnt/arch/var
 mkdir /mnt/arch/tmp
 mkdir /mnt/arch/home
 mkdir /mnt/arch/boot
-mkdir /mnt/arch/boot/efi
 
 mount /dev/sda4 /mnt/arch/usr
 mount /dev/sda5 /mnt/arch/var
 mount /dev/sda6 /mnt/arch/tmp
 mount /dev/sda7 /mnt/arch/home
-mount /dev/sda1 /mnt/arch/boot/efi
+mount /dev/sda1 /mnt/arch/boot
 
 #Base install:
 pacstrap /mnt/arch systemd pacman linux-lts linux-firmware vim git networkmanager
