@@ -71,4 +71,4 @@ useradd -mG wheel $username
 passwd $username
 
 
-pacman -Sd xf86-input-libinput xorg-xinit firefox
+pacman -Sd xf86-input-libinput xorg-xinit firefox neofetch git
