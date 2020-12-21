@@ -71,7 +71,7 @@ useradd -mG wheel $username
 passwd $username
 
 
-pacman -Sd xf86-input-libinput xorg-xinit xorg-server firefox neofetch git alsa-utils sxiv nitrogen dmenu sudo fakeroot make gcc patch
+pacman -Sd xf86-input-libinput xorg-xinit xorg-server firefox neofetch git alsa-utils sxiv nitrogen dmenu sudo fakeroot make gcc patch	freetype2
 
 echo "Uncomment wheel is sudo. Press enter to continue."
 read continue
