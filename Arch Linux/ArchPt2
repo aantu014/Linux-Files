@@ -55,7 +55,7 @@ EOF
 
 ###Update bootloader
 	
-bootctl --path=/boot update
+bootctl update
 
 ###Root password:
 
