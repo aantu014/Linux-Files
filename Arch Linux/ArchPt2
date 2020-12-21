@@ -72,3 +72,7 @@ passwd $username
 
 
 pacman -Sd xf86-input-libinput xorg-xinit xorg-server firefox neofetch git
+
+
+
+systemctl enable NetworkManager
