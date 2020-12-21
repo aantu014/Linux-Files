@@ -46,7 +46,7 @@ mount /dev/sda7 /mnt/arch/home
 mount /dev/sda1 /mnt/arch/boot
 
 #Base install:
-pacstrap /mnt/arch base linux-lts linux-firmware vim git networkmanager
+pacstrap /mnt/arch base linux-lts linux-firmware vim networkmanager
 
 #Generate the FSTAB file:
 
