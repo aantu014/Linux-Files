@@ -52,8 +52,12 @@ pacstrap /mnt/arch base linux-lts linux-firmware vim git networkmanager
 
 genfstab -U /mnt/arch >> /mnt/arch/etc/fstab
 
-#Enter the installation
 
+echo 'nameserver 1.1.1.1' | sudo tee -a /mnt/arch/etc/resolv.conf
+for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt/arch$i; done
+
+
+#Enter the installation
 arch-chroot /mnt/arch
 
 ##You are now in Arch Enirontment now download second part of script and runit ;)
