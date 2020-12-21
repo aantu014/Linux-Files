@@ -19,9 +19,9 @@ EOF
 
 ###Modify mkinitcpio.conf to add and btrfs:
 		
-#vim /etc/mkinitcpio.conf
+vim /etc/mkinitcpio.conf
 
-###HOOKS=(base udev autodetect modconf block filesystems keyboard)###
+###HOOKS=(base systemd autodetect modconf block keyboard sd-vconsole filesystems shutdown)###
 
 ###Exeucte mkinitcpio
 
