@@ -86,13 +86,15 @@ chown -R $username:$username ./yay-git
 echo "cd into  /opt/yay-git"
 echo " Type *makepkg -si* then *yay -Syu* and *yay -S st dwm* "
 
-su $username
-
-
 ###To remove a package using yay use the command.
 # yay -Rns package_name
 
 ###To clean up all unwanted dependencies on your system, issue the command.
 # yay -Yc
+
+su $username
+
+echo "exec dwm" > ~/.xinitrc
+echo "startx" > ~/.bash_profile
 
 systemctl enable NetworkManager
