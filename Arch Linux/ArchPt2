@@ -62,13 +62,8 @@ bootctl update
 passwd
 
 
-###Add user:
-
-echo "Type username: "
-read username
-
-useradd -mG wheel $username
-passwd $username
+useradd -mG wheel chinosavage
+passwd chinosavage
 
 
 pacman -Sd xf86-input-libinput xorg-xinit xorg-server firefox neofetch git alsa-utils sxiv nitrogen dmenu sudo fakeroot make gcc patch freetype2 pkg-config
@@ -80,7 +75,7 @@ visudo
 
 cd /opt
 git clone https://aur.archlinux.org/yay-git.git
-chown -R $username:$username ./yay-git
+chown -R chinosavage:chinosavage ./yay-git
 
 
 echo "cd into  /opt/yay-git"
