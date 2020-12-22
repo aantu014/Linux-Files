@@ -87,7 +87,7 @@ echo " Type *makepkg -si* then *yay -Syu* and *yay -S st dwm* "
 ###To clean up all unwanted dependencies on your system, issue the command.
 # yay -Yc
 
-su $username
+su chinosavage
 
 echo "exec dwm" > ~/.xinitrc
 echo "startx" >> ~/.bash_profile
