@@ -61,10 +61,14 @@ bootctl update
 
 passwd
 
+echo "Enter new user name:"
+read user
 
-useradd -mG wheel chinosavage
-passwd chinosavage
+useradd -mG wheel $user
+passwd $user
 
+chmod 0755 /etc
+chmod -R 755 /var/lib/pacman
 
 pacman -Sd xf86-input-libinput xorg-xinit xorg-server firefox neofetch git alsa-utils sxiv nitrogen dmenu sudo fakeroot make gcc patch freetype2 pkg-config
 
@@ -75,10 +79,10 @@ visudo
 
 cd /opt
 git clone https://aur.archlinux.org/yay-git.git
-chown -R chinosavage:chinosavage ./yay-git
+chown -R $user:$user ./yay-git
 
 
-echo "cd into  /opt/yay-git"
+echo "cd into /opt/yay-git"
 echo " Type *makepkg -si* then *yay -Syu* and *yay -S st dwm* "
 
 ###To remove a package using yay use the command.
@@ -87,7 +91,7 @@ echo " Type *makepkg -si* then *yay -Syu* and *yay -S st dwm* "
 ###To clean up all unwanted dependencies on your system, issue the command.
 # yay -Yc
 
-su chinosavage
+su $user
 
 echo "exec dwm" > ~/.xinitrc
 echo "startx" >> ~/.bash_profile
