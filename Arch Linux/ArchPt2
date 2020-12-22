@@ -95,6 +95,6 @@ echo " Type *makepkg -si* then *yay -Syu* and *yay -S st dwm* "
 su $username
 
 echo "exec dwm" > ~/.xinitrc
-echo "startx" > ~/.bash_profile
+echo "startx" >> ~/.bash_profile
 
 systemctl enable NetworkManager
