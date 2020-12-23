@@ -14,7 +14,7 @@ apt update
 
 apt update && apt upgrade --no-install-recommends
 
-apt install --no-install-recommends debian-keyring vim systemd
+apt install --no-install-recommends kali-archive-keyring vim systemd
 
 apt install --no-install-recommends locales && dpkg-reconfigure locales
 
