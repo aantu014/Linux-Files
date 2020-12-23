@@ -70,11 +70,11 @@ cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 cat /etc/conf.d/net > /mnt/gentoo/etc/conf.d/net
 
-mount --types proc /proc /mnt/gentoo/proc
-mount --rbind /sys /mnt/gentoo/sys
-mount --make-rslave /mnt/gentoo/sys
-mount --rbind /dev /mnt/gentoo/dev
-mount --make-rslave /mnt/gentoo/dev 
+
+mount -t proc /proc /mnt/gentoo/proc
+mount --rbind --make-rslave /dev /mnt/gentoo/dev
+mount --rbind --make-rslave /sys /mnt/gentoo/sys
+mount --rbind --make-rslave /run /mnt/gentoo/run
 
 # If not using Gentoo iso
 #test -L /dev/shm && rm /dev/shm && mkdir /dev/shm 
