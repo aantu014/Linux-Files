@@ -50,7 +50,7 @@ pacstrap /mnt/arch base linux-lts linux-firmware vim networkmanager
 
 #Generate the FSTAB file:
 
-genfstab -U /mnt/arch >> /mnt/arch/etc/fstab
+genfstab -U -p /mnt/arch >> /mnt/arch/etc/fstab
 
 
 echo 'nameserver 1.1.1.1' | sudo tee -a /mnt/arch/etc/resolv.conf
