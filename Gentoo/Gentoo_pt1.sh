@@ -33,10 +33,7 @@ mkfs.ext4 -L genvar /dev/sda5
 mkfs.ext4 -L gentmp /dev/sda6
 mkfs.ext4 -L genhome /dev/sda7
 
-
 mkdir /mnt/gentoo/
-
-
 
 mount /dev/sda3 /mnt/gentoo/
 mkdir /mnt/gentoo/usr
