@@ -33,14 +33,14 @@ bootctl install
 cat <<EOF> /boot/loader/loader.conf
 timeout 3
 #console-mode keep
-default arch-*
+default Linux
 editor no
 EOF
 ###Copy the arch.conf file to the  entries directory:
 
-cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/
-###Edit the details for the arch.conf file:
-cat <<EOF> /boot/loader/entries/arch.conf
+#cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/
+###Edit the details for the kali.conf file:
+cat <<EOF> /boot/loader/entries/kali.conf
 title Kali Linux
 linux /vmlinuz-linux-lts
 initrd /initramfs-linux-lts.img
