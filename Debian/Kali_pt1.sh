@@ -31,12 +31,14 @@ mkdir /mnt/kali/var
 mkdir /mnt/kali/tmp
 mkdir /mnt/kali/home
 mkdir /mnt/kali/boot
+mkdir /mnt/kali/boot/efi
+
 
 mount /dev/sda4 /mnt/kali/usr
 mount /dev/sda5 /mnt/kali/var
 mount /dev/sda6 /mnt/kali/tmp
 mount /dev/sda7 /mnt/kali/home
-mount /dev/sda1 /mnt/kali/boot
+mount /dev/sda1 /mnt/kali/boot/efi
 
 
 debootstrap --variant=minbase --arch amd64 kali-rolling /mnt/kali http://http.kali.org/kali
