@@ -64,7 +64,7 @@ passwd
 echo "Enter new user name:"
 read user
 
-useradd -mG wheel $user
+useradd -m -G users,wheel,audio -s /bin/bash $user
 passwd $user
 
 chmod 0755 /etc
