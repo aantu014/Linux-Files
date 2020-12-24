@@ -28,8 +28,10 @@ vim /etc/mkinitcpio.conf
 ###HOOKS=(base systemd autodetect modconf block keyboard sd-vconsole filesystems shutdown)###
 ###Exeucte mkinitcpio
 mkinitcpio -p linux-lts
+
 ###systemd-boot install:
-bootctl install
+bootctl install --path=/boot/efi
+
 ###Edit the loader.conf file in the /boot/loader directory:
 cat <<EOF> /boot/loader/loader.conf
 timeout 3
