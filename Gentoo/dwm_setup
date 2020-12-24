@@ -1,6 +1,9 @@
 # To copy and paste in terminal ctrl+shift+ v or c
 emerge --autounmask-continue -q x11-terms/st x11-misc/dmenu x11-wm/dwm media-gfx/sxiv x11-misc/nitrogen media-gfx/maim
 
+#Sxiv is image viewer
+#Nitrogen sets wallpaper
+#Maim takes screenshots
 
 echo "exec dbus-launch --sh-syntax --exit-with-session dwm" > ~/.xinitrc
 
