@@ -37,8 +37,6 @@ default Linux
 editor no
 EOF
 
-chattr -i /boot/loader/loader.conf
-
 ###Copy the arch.conf file to the  entries directory:
 
 #cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/
