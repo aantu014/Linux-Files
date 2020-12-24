@@ -9,6 +9,7 @@ cat <<EOF> /etc/apt/sources.list
 deb http://http.kali.org/kali kali-rolling main contrib non-free
 EOF
 
+echo "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" > /etc/environment
 
 apt update
 
