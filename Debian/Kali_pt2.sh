@@ -23,10 +23,6 @@ dpkg-reconfigure tzdata
 
 apt install --no-install-recommends linux-image-amd64
 
-
-
-
-
 cd /boot/efi
 mkdir -p loader/entries
 mkdir kali
@@ -37,14 +33,21 @@ timeout 3
 editor 0
 EOF
 
+#Run Script
+./etc/kernel/postinst.d/zz-update-systemd-boot
 
 
+# One for the kernel's postrm:
+cd /etc/kernel/postrm.d/ && ln -s ../postinst.d/zz-update-systemd-boot zz-update-systemd-boot
 
+# Note: Ubuntu does not usually create the necessary hook folder
+# for initramfs, so the next line will take care of that if
+# needed. (And yes, it *is* supposed to be "initramfs" and not
+# "initramfs-tools"!)
+[ -d "/etc/initramfs/post-update.d" ] || mkdir -p /etc/initramfs/post-update.d
 
-
-
-
-
+# And now we can add the symlink:
+cd /etc/initramfs/post-update.d/ && ln -s ../../kernel/postinst.d/zz-update-systemd-boot zz-update-systemd-boot
 
 ###systemd-boot install:
 bootctl install --path=/boot/efi
