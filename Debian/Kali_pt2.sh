@@ -23,36 +23,35 @@ dpkg-reconfigure tzdata
 
 apt install --no-install-recommends linux-image-amd64
 
-vim /etc/mkinitcpio.conf
 
-###HOOKS=(base systemd autodetect modconf block keyboard sd-vconsole filesystems shutdown)###
-###Exeucte mkinitcpio
-mkinitcpio -p linux-lts
+
+
+
+cd /boot/efi
+mkdir -p loader/entries
+mkdir kali
+
+cat <<EOF> /boot/efi/loader/loader.conf
+default kali
+timeout 3
+editor 0
+EOF
+
+
+
+
+
+
+
+
+
 
 ###systemd-boot install:
 bootctl install --path=/boot/efi
 
-###Edit the loader.conf file in the /boot/loader directory:
-cat <<EOF> /boot/loader/loader.conf
-timeout 3
-#console-mode keep
-default Linux
-editor no
-EOF
-
-###Copy the arch.conf file to the  entries directory:
-
-#cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/
-###Edit the details for the kali.conf file:
-cat <<EOF> /boot/loader/entries/kali.conf
-title Kali Linux
-linux /vmlinuz-linux-lts
-initrd /initramfs-linux-lts.img
-options root=LABEL=kaliroot rw
-EOF
 ###Update bootloader
 
-bootctl update
+#bootctl update
 
 ###Root password:
 passwd
