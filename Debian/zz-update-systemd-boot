@@ -2,11 +2,10 @@
 
 #mkinitramfs -o /boot/initrd.img-$(uname --release)
 
+
 cd /boot/efi
 mkdir -p loader/entries
 mkdir kali
-
-cd /
 
 cat <<EOF> /boot/efi/loader/loader.conf
 default kali
