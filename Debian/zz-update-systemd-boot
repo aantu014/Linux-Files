@@ -51,7 +51,7 @@ if [ ${#KERNELS[@]} -gt 1 ]; then
         for FILE in config initrd.img System.map vmlinuz; do
             cp "/boot/${FILE}-${VERSION}" "/boot/efi/kali/${FILE}-${VERSION}"
             cat << EOF > /boot/efi/loader/entries/kali-${VERSION}.conf
-title   Ubuntu GNOME ${VERSION}
+title   Kali Linux ${VERSION}
 linux   /kali/vmlinuz-${VERSION}
 initrd  /kali/initrd.img-${VERSION}
 options root=LABEL=kaliroot rw
