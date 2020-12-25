@@ -66,6 +66,9 @@ passwd $user
 
 apt install --no-install-recommends xserver-xorg-input-libinput xinit xserver-xorg-core firefox-esr neofetch git alsa-utils sxiv nitrogen maim stterm dwm sudo network-manager iputils-ping iproute2
 
+#Network firmware
+#apt install --no-install-recommends firmware-atheros firmware-realtek
+
 echo "Uncomment '%sudo' in sudo. Press enter to continue."
 read continue
 
