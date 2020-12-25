@@ -48,6 +48,19 @@ mount --rbind --make-rslave /dev /mnt/kali/dev
 mount --rbind --make-rslave /sys /mnt/kali/sys
 mount --rbind --make-rslave /run /mnt/kali/run
 
+cd /boot
+cp /boot/*-amd64 /mnt/kali/boot/
+
+cd /
+curl -O https://raw.githubusercontent.com/aantu014/Linux-Files/master/Debian/zz-update-systemd-boot
+
+mv zz-update-systemd-boot /mnt/kali/boot/etc/kernel/postinst.d/ 
+# Set the right owner.
+chown root: /mnt/kali/boot/etc/kernel/postinst.d/zz-update-systemd-boot
+# Make it executable.
+chmod 0755 /mnt/kali/boot/etc/kernel/postinst.d/zz-update-systemd-boot
+
+## IF /var on seperate partion change option to Defaults.
 genfstab -U -p /mnt/kali >> /mnt/kali/etc/fstab
 
 chroot /mnt/kali /bin/bash
