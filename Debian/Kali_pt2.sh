@@ -74,6 +74,7 @@ read continue
 
 vim /etc/sudoers
 
+echo "rmmod pcspkr" > /etc/modprobe.d/blacklist
 echo "dmesg -n 1" > /etc/rc.local
 echo "exec dwm" > ~/.xinitrc
 echo "startx" >> ~/.bash_profile
