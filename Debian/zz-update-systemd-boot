@@ -1,0 +1,77 @@
+#!/bin/bash
+
+#mkinitramfs -o /boot/initrd.img-$(uname --release)
+
+cd /boot/efi
+mkdir -p loader/entries
+mkdir kali
+
+cd /
+
+cat <<EOF> /boot/efi/loader/loader.conf
+default kali
+timeout 3
+editor 0
+EOF
+
+
+#
+# This is a simple kernel hook to populate the systemd-boot entries
+# whenever kernels are added or removed.
+#
+
+# Our kernels.
+KERNELS=()
+FIND="find /boot -maxdepth 1 -name 'vmlinuz-*' -type f -not -name '*.dpkg-tmp' -print0 | sort -Vrz"
+while IFS= read -r -u3 -d $'\0' LINE; do
+    KERNEL=$(basename "${LINE}")
+    KERNELS+=("${KERNEL:8}")
+done 3< <(eval "${FIND}")
+
+# There has to be at least one kernel.
+if [ ${#KERNELS[@]} -lt 1 ]; then
+    echo -e "\e[2msystemd-boot\e[0m \e[1;31mNo kernels found.\e[0m"
+    exit 1
+fi
+
+# Perform a nuclear clean to ensure everything is always in
+# perfect sync.
+rm /boot/efi/loader/entries/*.conf
+rm -rf /boot/efi/kali
+mkdir /boot/efi/kali
+
+# Copy the latest kernel files to a consistent place so we can
+# keep using the same loader configuration.
+LATEST="${KERNELS[@]:0:1}"
+echo -e "\e[2msystemd-boot\e[0m \e[1;32m${LATEST}\e[0m"
+for FILE in config initrd.img System.map vmlinuz; do
+    cp "/boot/${FILE}-${LATEST}" "/boot/efi/kali/${FILE}"
+    cat << EOF > /boot/efi/loader/entries/kali.conf
+title   Kali Linux
+linux   /kali/vmlinuz
+initrd  /kali/initrd.img
+options root=LABEL=kaliroot rw
+EOF
+done
+
+# Copy any legacy kernels over too, but maintain their version-
+# based names to avoid collisions.
+if [ ${#KERNELS[@]} -gt 1 ]; then
+    LEGACY=("${KERNELS[@]:1}")
+    for VERSION in "${LEGACY[@]}"; do
+        echo -e "\e[2msystemd-boot\e[0m \e[1;32m${VERSION}\e[0m"
+        for FILE in config initrd.img System.map vmlinuz; do
+            cp "/boot/${FILE}-${VERSION}" "/boot/efi/kali/${FILE}-${VERSION}"
+            cat << EOF > /boot/efi/loader/entries/kali-${VERSION}.conf
+title   Ubuntu GNOME ${VERSION}
+linux   /kali/vmlinuz-${VERSION}
+initrd  /kali/initrd.img-${VERSION}
+options root=LABEL=kaliroot rw
+EOF
+        done
+    done
+fi
+
+# Success!
+echo -e "\e[2m---\e[0m"
+exit 0
