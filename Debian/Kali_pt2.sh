@@ -64,7 +64,9 @@ read user
 useradd -m -g sudo -s /bin/bash $user
 passwd $user
 
-apt install --no-install-recommends xserver-xorg-input-libinput xinit xserver-xorg-core firefox-esr neofetch git alsa-utils sxiv nitrogen maim stterm suckless-tools dwm sudo network-manager iputils-ping iproute2 ca-certificates curl less
+apt install --no-install-recommends xserver-xorg-input-libinput xinit xserver-xorg-core libavcodec58 firefox-esr \
+neofetch git alsa-utils sxiv nitrogen maim stterm suckless-tools dwm sudo network-manager iputils-ping \
+iproute2 ca-certificates curl less
 
 #Network firmware
 #apt install --no-install-recommends firmware-atheros firmware-realtek
