@@ -71,6 +71,9 @@ iproute2 ca-certificates curl less
 #Network firmware
 #apt install --no-install-recommends firmware-atheros firmware-realtek
 
+#Graphics firmware
+#apt install --no-install-recommends firmware-amd-graphics
+
 echo "Uncomment '%sudo' in sudo. Press enter to continue."
 read continue
 
