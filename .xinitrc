@@ -16,7 +16,7 @@ while true
 do
 	VOL="Volume: $(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')"
 	LOCALTIME=$(date "+%m/%d/%Y %l:%M %p")
-	INTERFACE=$(ip a | grep UP | sed 's/ /\n/g' | grep : | cut -d$'\n' -f4 | sed 's/://g')
+	INTERFACE=$(ip a | grep "<BROADCAST" |cut -d ":" -f2 | cut -d " " -f2| sed 's/://g')
 	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
 
 
