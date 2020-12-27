@@ -66,7 +66,7 @@ passwd $user
 
 apt install --no-install-recommends xserver-xorg-input-libinput xinit xserver-xorg-core x11-xserver-utils \
 libavcodec58 firefox-esr neofetch git alsa-utils sxiv nitrogen maim stterm suckless-tools dwm sudo \
-network-manager iputils-ping iproute2 ca-certificates curl less
+network-manager iputils-ping iproute2 ca-certificates curl less xcompmgr
 
 #Network firmware
 #apt install --no-install-recommends firmware-atheros firmware-realtek
