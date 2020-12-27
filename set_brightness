@@ -51,6 +51,12 @@ if [[ \$- != *i* ]] ; then
 	return
 fi
 
+## term value may be different make sure to check and replace "x-terminal-emul" if nessesary.
+
+term="\$(cat /proc/$PPID/comm)"
+if [[ \$term = "x-terminal-emul" ]]; then
+	transset "0.70" --id "\$WINDOWID"  >/dev/null
+fi
 
 # Put your fun stuff here.
 history -c
