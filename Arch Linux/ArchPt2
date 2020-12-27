@@ -84,7 +84,7 @@ chown -R $user:$user ./yay-git
 
 
 echo "cd into /opt/yay-git"
-echo " Type *makepkg -si* then *yay -Syu* and *yay -S st dwm* "
+echo " Type *makepkg -si* then *yay -Syu* and *yay -S st dwm transset-df* "
 
 ###To remove a package using yay use the command.
 # yay -Rns package_name
