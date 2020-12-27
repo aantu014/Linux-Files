@@ -7,6 +7,7 @@
 cap=$(cat /sys/class/power_supply/BAT0/capacity)
 max=100
 
+xcompmgr -c &
 
 while true
 do
