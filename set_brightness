@@ -52,6 +52,7 @@ if [[ \$- != *i* ]] ; then
 fi
 
 ## term value may be different make sure to check and replace "x-terminal-emul" if necessary.
+#If using arch change transset to transset-df
 
 term="\$(cat /proc/\$PPID/comm)"
 if [[ \$term = "x-terminal-emul" ]]; then
