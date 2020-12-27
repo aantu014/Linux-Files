@@ -71,7 +71,7 @@ chmod 0755 /etc
 chmod -R 755 /var/lib/pacman
 
 pacman -Sd xf86-input-libinput xorg-xinit xorg-server xorg-xsetroot firefox neofetch git alsa-utils sxiv nitrogen maim \
-dmenu sudo fakeroot make gcc patch freetype2 pkg-config
+dmenu sudo fakeroot make gcc patch freetype2 pkg-config xcompmgr
 
 echo "Uncomment wheel is sudo. Press enter to continue."
 read continue
