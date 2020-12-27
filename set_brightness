@@ -51,7 +51,7 @@ if [[ \$- != *i* ]] ; then
 	return
 fi
 
-## term value may be different make sure to check and replace "x-terminal-emul" if nessesary.
+## term value may be different make sure to check and replace "x-terminal-emul" if necessary.
 
 term="\$(cat /proc/\$PPID/comm)"
 if [[ \$term = "x-terminal-emul" ]]; then
