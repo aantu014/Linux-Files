@@ -1,0 +1,9 @@
+# This will show you how to edit dwm if your installed it from repository install of from source.
+
+#The folder dwm-6.2 may change with updates. cd into correct folder name.
+cd /home/$USER/.cache/yay/dwm/src/dwm-6.2/ 
+vim config.h
+
+#Once changes have been made
+sudo sudo make clean install
+
