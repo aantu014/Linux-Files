@@ -13,9 +13,9 @@ xcompmgr -c &
 
 while true
 do
+#	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
 #	VOL="Volume:($(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/'))"
 	LOCALTIME=$(date "+%m/%d/%Y %l:%M %p")
-#	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
 	BAT="Battery:(${cap}%)"
 	
 	xsetroot -name "$INTERFACE  $BAT $LOCALTIME"
