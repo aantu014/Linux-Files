@@ -6,7 +6,6 @@
 
 
 INTERFACE=$(ip a | grep "<BROADCAST" |cut -d ":" -f2 | cut -d " " -f2| sed 's/://g')
-cap=$(cat /sys/class/power_supply/BAT0/capacity)
 #max=100
 
 xcompmgr -c &
@@ -16,7 +15,7 @@ do
 #	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
 #	VOL="Volume:($(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/'))"
 	LOCALTIME=$(date "+%m/%d/%Y %l:%M %p")
-	BAT="Battery:(${cap}%)"
+	BAT="Battery:($(cat /sys/class/power_supply/BAT0/capacity)%)"
 	
 	xsetroot -name "$INTERFACE  $BAT $LOCALTIME"
 
