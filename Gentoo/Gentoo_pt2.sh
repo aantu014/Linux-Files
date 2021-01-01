@@ -5,7 +5,7 @@ export PS1="(chroot) ${PS1}"
 
 emerge-webrsync -q
 
-emerge -uqNDq world
+emerge --ask --quiet --update --deep --newuse @world
 
 echo 'USE="${USE} libressl"' >> /etc/portage/make.conf
 echo 'CURL_SSL="libressl"' >> /etc/portage/make.conf
