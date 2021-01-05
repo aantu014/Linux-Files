@@ -73,7 +73,7 @@ chmod +x genfstab
 
 cat <<EOF>> /etc/fstab
 
-"shm                     /dev/shm        tmpfs           nodev,nosuid,noexec     0 0" 
+shm                     /dev/shm        tmpfs           nodev,nosuid,noexec     0 0
 EOF
 
 emerge -q --autounmask-continue app-admin/doas x11-drivers/xf86-input-libinput media-sound/alsa-utils net-wireless/wpa_supplicant
