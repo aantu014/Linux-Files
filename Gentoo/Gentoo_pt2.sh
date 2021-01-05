@@ -82,5 +82,5 @@ emerge -q --autounmask-continue app-admin/doas x11-drivers/xf86-input-libinput m
 #for x in /etc/runlevels/default/net.* ; do rc-update del $(basename $x) default ; rc-service --ifstarted $(basename $x) stop; done
 #rc-update del dhcpcd default
 #rc-update add NetworkManager default
-
+rc-update add dbus default
 passwd
