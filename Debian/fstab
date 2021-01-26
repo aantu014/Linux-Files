@@ -1,0 +1,29 @@
+# UNCONFIGURED FSTAB FOR BASE SYSTEM
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# /dev/sdc2 LABEL=kaliroot
+UUID=3feccf3e-179d-4dc6-ae62-2a12bfbc2176	/         	ext4      	rw,relatime	0 1
+
+# /dev/sdc3 LABEL=kaliusr
+UUID=e227a9af-a362-49f5-b7be-5a151e8231da	/usr      	ext4      	defaults	0 2
+
+# /dev/sdc4 LABEL=kalivar
+UUID=f8ffb86f-63f0-4d2b-b311-288afba3e747	/var      	ext4      	rw,relatime	0 2
+
+# /dev/sdc5 LABEL=kalitmp
+UUID=cdf1fdc2-5ee1-4edb-8eed-4648142e69d7	/tmp      	ext4      	rw,relatime	0 2
+
+# /dev/sdc6 LABEL=kalihome
+UUID=f2b6dfde-4451-4c96-8f55-fc14ab83918c	/home     	ext4      	rw,relatime	0 2
+
+# /dev/sdc1
+UUID=E752-D146      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# tracefs
+tracefs             	/sys/kernel/tracing	tracefs   	rw,nosuid,nodev,noexec	0 0
+
