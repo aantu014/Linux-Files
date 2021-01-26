@@ -5,17 +5,17 @@ export PS1="(chroot) ${PS1}"
 
 emerge-webrsync -q
 
-emerge --autounmask-continue --quiet --update --deep --newuse @world
+#emerge --autounmask-continue --quiet --update --deep --newuse @world
 
-echo 'USE="${USE} libressl"' >> /etc/portage/make.conf
-echo 'CURL_SSL="libressl"' >> /etc/portage/make.conf
-mkdir -p /etc/portage/profile
-printf "-libressl\n" >> /etc/portage/profile/use.stable.mask
-echo "dev-libs/openssl" >> /etc/portage/package.mask
-echo "dev-libs/libressl" >> /etc/portage/package.accept_keywords
-emerge -f libressl
-emerge -C openssl
-emerge -1q libressl
+#echo 'USE="${USE} libressl"' >> /etc/portage/make.conf
+#echo 'CURL_SSL="libressl"' >> /etc/portage/make.conf
+#mkdir -p /etc/portage/profile
+#printf "-libressl\n" >> /etc/portage/profile/use.stable.mask
+#echo "dev-libs/openssl" >> /etc/portage/package.mask
+#echo "dev-libs/libressl" >> /etc/portage/package.accept_keywords
+#emerge -f libressl
+#emerge -C openssl
+#emerge -1q libressl
 
 
 emerge --deselect app-editors/nano
