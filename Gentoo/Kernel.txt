@@ -1,0 +1,5 @@
+https://www.kernelconfig.io/index.html
+https://linux-hardware.org/?view=computers&type=Notebook&vendor=Lenovo&model=IdeaPad+330S-15IKB+81F5
+
+CONFIG_PREVENT_FIRMWARE_BUILD
+CONFIG_ATH10K_PCI
