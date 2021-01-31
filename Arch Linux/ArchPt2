@@ -71,16 +71,11 @@ chmod 0755 /etc
 chmod -R 755 /var/lib/pacman
 
 pacman -Sd xf86-input-libinput xorg-xinit xorg-server xorg-xsetroot firefox neofetch git alsa-utils sxiv nitrogen maim \
-dmenu community/opendoas fakeroot make gcc patch freetype2 pkg-config xcompmgr
+dmenu sudo fakeroot make gcc patch freetype2 pkg-config xcompmgr
 
-echo "I will use 'doas' instead of 'sudo' because its more secure"
-echo "Will create the file /etc/doas.conf with the following content:"
-echo "  		permit persist :wheel"
-
+echo "Uncomment wheel is sudo. Press enter to continue."
 read continue
-
-echo "permit persist :wheel" > /etc/doas.conf
-
+visudo
 
 cd /opt
 git clone https://aur.archlinux.org/yay-git.git
