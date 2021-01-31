@@ -75,11 +75,11 @@ dmenu community/opendoas fakeroot make gcc patch freetype2 pkg-config xcompmgr
 
 echo "I will use 'doas' instead of 'sudo' because its more secure"
 echo "Will create the file /etc/doas.conf with the following content:"
-echo "  		permit :wheel"
+echo "  		permit persist :wheel"
 
 read continue
 
-echo "permit :wheel" > /etc/doas.conf
+echo "permit persist :wheel" > /etc/doas.conf
 
 
 cd /opt
