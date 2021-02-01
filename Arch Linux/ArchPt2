@@ -97,3 +97,6 @@ echo "exec dwm" > ~/.xinitrc
 echo "startx" >> ~/.bash_profile
 
 systemctl enable NetworkManager
+
+#If you plan on installing opendoas
+#yay --sudo doas --sudoflags -- --save
