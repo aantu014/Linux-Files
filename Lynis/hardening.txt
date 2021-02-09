@@ -96,6 +96,8 @@ net.ipv6.conf.default.accept_redirects = 0
 sudo sysctl --system
 
 ###Harden compilers like restricting access to root user only
+#sudo grep "(compiler)" /var/log/lynis.log file
+
 sudo chmod o-rx /usr/bin/gcc
 sudo chmod o-rx /usr/bin/as
 
