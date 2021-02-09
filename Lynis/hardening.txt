@@ -18,6 +18,9 @@ PASS_MIN_DAYS   1
 /etc/modprobe.d/blacklist.conf
 blacklist usb-storage
 blacklist firewire-core
+blacklist firewire-ohci
+blacklist firewire_core
+blacklist firewire_ohci
 
 ###To decrease the impact of a full /tmp file system, place /tmp on a separated partition
 systemctl enable tmp.mount	#check if enable "df -Ph /tmp"
