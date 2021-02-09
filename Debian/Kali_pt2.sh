@@ -36,6 +36,7 @@ EOF
 
 cd /etc/kernel/postinst.d/
 curl -O https://raw.githubusercontent.com/aantu014/Linux-Files/master/Debian/zz-update-systemd-boot
+chmod +x zz-update-systemd-boot
 
 #Run Script
 ./etc/kernel/postinst.d/zz-update-systemd-boot
