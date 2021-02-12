@@ -42,6 +42,7 @@ emerge -q --autounmask-continue sys-kernel/gentoo-sources sys-kernel/genkernel
 #Configure kernel but look for tutorials.
 cd /usr/src/linux
 make menuconfig
+make localmodconfig
 make && make modules_install && make install
 genkernel --install --kernel-config=/usr/src/linux/.config initramfs
 
