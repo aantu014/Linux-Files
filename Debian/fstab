@@ -22,7 +22,7 @@ UUID=cdf1fdc2-5ee1-4edb-8eed-4648142e69d7	/tmp      	ext4      	rw,relatime	0 2
 UUID=f2b6dfde-4451-4c96-8f55-fc14ab83918c	/home     	ext4      	rw,relatime	0 2
 
 # /dev/sdc1
-UUID=E752-D146      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+UUID=E752-D146      	/boot/efi     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
 
 # tracefs
 tracefs             	/sys/kernel/tracing	tracefs   	rw,nosuid,nodev,noexec	0 0
