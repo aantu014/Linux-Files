@@ -9,3 +9,6 @@ emerge --autounmask-continue -q x11-terms/st x11-misc/dmenu x11-wm/dwm media-gfx
 echo "exec dbus-launch --sh-syntax --exit-with-session dwm" > ~/.xinitrc
 
 echo "x11-wm/dwm savedconfig" > /etc/portage/package.use/dwm
+
+#If you want to install virtual box you might need this.
+#emerge media-libs/glu package
