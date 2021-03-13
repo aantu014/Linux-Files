@@ -2,6 +2,7 @@
 
 # Credit too https://blobfolio.com/2018/replace-grub2-with-systemd-boot-on-ubuntu-18-04/
 
+
 #mkinitramfs -o /boot/initrd.img-$(uname --release)
 
 
@@ -26,22 +27,23 @@ fi
 
 # Perform a nuclear clean to ensure everything is always in
 # perfect sync.
-#rm /boot/efi/loader/entries/*.conf
-#rm -rf /boot/efi/kali
-#mkdir /boot/efi/kali
-rm /boot/loader/entries/*.conf
-rm -rf /boot/kali
-mkdir /boot/kali
+
+rm /boot/efi/loader/entries/*.conf
+rm -rf /boot/efi/kali
+mkdir /boot/efi/kali
+#rm /boot/loader/entries/*.conf
+#rm -rf /boot/kali
+#mkdir /boot/kali
 
 # Copy the latest kernel files to a consistent place so we can
 # keep using the same loader configuration.
 LATEST="${KERNELS[@]:0:1}"
 echo -e "\e[2msystemd-boot\e[0m \e[1;32m${LATEST}\e[0m"
 for FILE in config initrd.img System.map vmlinuz; do
-    #cp "/boot/${FILE}-${LATEST}" "/boot/efi/kali/${FILE}"
-    #cat << EOF > /boot/efi/loader/entries/kali.conf   #uncomment if file not found
-    cp "/boot/${FILE}-${LATEST}" "/boot/kali/${FILE}"
-    cat << EOF > /boot/loader/entries/kali.conf
+    cp "/boot/${FILE}-${LATEST}" "/boot/efi/kali/${FILE}"
+    cat << EOF > /boot/efi/loader/entries/kali.conf   
+    #cp "/boot/${FILE}-${LATEST}" "/boot/kali/${FILE}"
+    #cat << EOF > /boot/loader/entries/kali.conf
 title   Kali Linux
 linux   /kali/vmlinuz
 initrd  /kali/initrd.img
@@ -56,10 +58,10 @@ if [ ${#KERNELS[@]} -gt 1 ]; then
     for VERSION in "${LEGACY[@]}"; do
         echo -e "\e[2msystemd-boot\e[0m \e[1;32m${VERSION}\e[0m"
         for FILE in config initrd.img System.map vmlinuz; do
-            #cp "/boot/${FILE}-${VERSION}" "/boot/efi/kali/${FILE}-${VERSION}"
-            #cat << EOF > /boot/efi/loader/entries/kali-${VERSION}.conf
-            cp "/boot/${FILE}-${VERSION}" "/boot/kali/${FILE}-${VERSION}"
-            cat << EOF > /boot/loader/entries/kali-${VERSION}.conf
+            cp "/boot/${FILE}-${VERSION}" "/boot/efi/kali/${FILE}-${VERSION}"
+            cat << EOF > /boot/efi/loader/entries/kali-${VERSION}.conf
+            #cp "/boot/${FILE}-${VERSION}" "/boot/kali/${FILE}-${VERSION}"
+            #cat << EOF > /boot/loader/entries/kali-${VERSION}.conf
 title   Kali Linux ${VERSION}
 linux   /kali/vmlinuz-${VERSION}
 initrd  /kali/initrd.img-${VERSION}
