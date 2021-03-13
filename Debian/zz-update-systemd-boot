@@ -38,8 +38,9 @@ mkdir /boot/kali
 LATEST="${KERNELS[@]:0:1}"
 echo -e "\e[2msystemd-boot\e[0m \e[1;32m${LATEST}\e[0m"
 for FILE in config initrd.img System.map vmlinuz; do
-    cp "/boot/${FILE}-${LATEST}" "/boot/efi/kali/${FILE}"
+    #cp "/boot/${FILE}-${LATEST}" "/boot/efi/kali/${FILE}"
     #cat << EOF > /boot/efi/loader/entries/kali.conf   #uncomment if file not found
+    cp "/boot/${FILE}-${LATEST}" "/boot/kali/${FILE}"
     cat << EOF > /boot/loader/entries/kali.conf
 title   Kali Linux
 linux   /kali/vmlinuz
