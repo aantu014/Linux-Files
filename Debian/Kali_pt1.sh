@@ -56,7 +56,7 @@ curl -O https://raw.githubusercontent.com/aantu014/Linux-Files/master/Debian/zz-
 
 mv zz-update-systemd-boot /mnt/kali/etc/kernel/postinst.d/ 
 # Set the right owner.
-chown root: /mnt/kali/boot/etc/kernel/postinst.d/zz-update-systemd-boot
+chown root: /mnt/kali/etc/kernel/postinst.d/zz-update-systemd-boot
 # Make it executable.
 chmod 0755 /mnt/kali/etc/kernel/postinst.d/zz-update-systemd-boot
 
