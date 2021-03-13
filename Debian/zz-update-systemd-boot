@@ -28,9 +28,10 @@ fi
 # perfect sync.
 #rm /boot/efi/loader/entries/*.conf
 #rm -rf /boot/efi/kali
+#mkdir /boot/efi/kali
 rm /boot/loader/entries/*.conf
 rm -rf /boot/kali
-mkdir /boot/efi/kali
+mkdir /boot/kali
 
 # Copy the latest kernel files to a consistent place so we can
 # keep using the same loader configuration.
