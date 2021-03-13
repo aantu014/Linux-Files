@@ -36,7 +36,8 @@ LATEST="${KERNELS[@]:0:1}"
 echo -e "\e[2msystemd-boot\e[0m \e[1;32m${LATEST}\e[0m"
 for FILE in config initrd.img System.map vmlinuz; do
     cp "/boot/${FILE}-${LATEST}" "/boot/efi/kali/${FILE}"
-    cat << EOF > /boot/efi/loader/entries/kali.conf
+    #cat << EOF > /boot/efi/loader/entries/kali.conf   #uncomment if file not found
+    cat << EOF > /boot/loader/entries/kali.conf
 title   Kali Linux
 linux   /kali/vmlinuz
 initrd  /kali/initrd.img
@@ -52,7 +53,8 @@ if [ ${#KERNELS[@]} -gt 1 ]; then
         echo -e "\e[2msystemd-boot\e[0m \e[1;32m${VERSION}\e[0m"
         for FILE in config initrd.img System.map vmlinuz; do
             cp "/boot/${FILE}-${VERSION}" "/boot/efi/kali/${FILE}-${VERSION}"
-            cat << EOF > /boot/efi/loader/entries/kali-${VERSION}.conf
+            #cat << EOF > /boot/efi/loader/entries/kali-${VERSION}.conf
+            cat << EOF > /boot/loader/entries/kali.conf
 title   Kali Linux ${VERSION}
 linux   /kali/vmlinuz-${VERSION}
 initrd  /kali/initrd.img-${VERSION}
