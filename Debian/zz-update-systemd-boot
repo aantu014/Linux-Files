@@ -47,7 +47,7 @@ for FILE in config initrd.img System.map vmlinuz; do
 title   Kali Linux
 linux   /kali/vmlinuz
 initrd  /kali/initrd.img
-options root=LABEL=kaliroot rw
+options root=LABEL=kaliroot rw quiet
 EOF
 done
 
@@ -65,7 +65,7 @@ if [ ${#KERNELS[@]} -gt 1 ]; then
 title   Kali Linux ${VERSION}
 linux   /kali/vmlinuz-${VERSION}
 initrd  /kali/initrd.img-${VERSION}
-options root=LABEL=kaliroot rw
+options root=LABEL=kaliroot rw quiet
 EOF
         done
     done
