@@ -62,6 +62,7 @@ chmod 0755 /mnt/kali/etc/kernel/postinst.d/zz-update-systemd-boot
 
 ## IF /var on seperate partion change option to Defaults.
 genfstab -U -p /mnt/kali >> /mnt/kali/etc/fstab
+sed -i 's/relatime/noatime/g' /mnt/kali/etc/fstab
 
 chroot /mnt/kali /bin/bash
 
