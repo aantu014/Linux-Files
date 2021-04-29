@@ -1,0 +1,1 @@
+systemctl mask bluetooth.target printer.target smartcard.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
