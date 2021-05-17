@@ -106,6 +106,7 @@ sudo sysctl --system
 
 ###Harden compilers like restricting access to root user only
 #sudo grep "(compiler)" /var/log/lynis.log file
+# Check if scripts are softlinks.
 
 chmod o-x /usr/bin/as /usr/bin/g++ /usr/bin/gcc
 chmod o-r /usr/bin/as /usr/bin/g++ /usr/bin/gcc
