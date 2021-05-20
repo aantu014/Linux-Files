@@ -1,6 +1,12 @@
 ###Purge old/removed packages (x found) with aptitude purge or dpkg –purge command. This will cleanup old configuration files, cron jobs and startup scripts
 apt purge $(dpkg --get-selections | awk '/deinstall/ { print $1 }')
 
+
+###Enable logging to an external logging host for archiving purposes and additional protection
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/configuring-a-remote-logging-solution_configuring-basic-system-settings
+sudo yum install rsyslog
+
+
 ###Default umask in /etc/profile or /etc/profile.d/custom.sh could be more strict 
 ###Default umask in /etc/bashrc and /etc/csh.cshrc.
 ###Default umask in /usr/etc/login.defs or /etc/login.defs
