@@ -3,6 +3,7 @@ apt purge $(dpkg --get-selections | awk '/deinstall/ { print $1 }')
 
 ###Default umask in /etc/profile or /etc/profile.d/custom.sh could be more strict 
 ###Default umask in /etc/bashrc and /etc/csh.cshrc.
+###Default umask in /usr/etc/login.defs or /etc/login.defs
 if [ $UID -gt 199 ] && [ "`id -gn`" = "`id -un`" ]; then
     umask 027
 else
