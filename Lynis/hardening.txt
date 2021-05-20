@@ -12,11 +12,11 @@ fi
 ###When possible set expire dates for all password protected accounts 
 chage -E 2100-01-01 aantu014
 
-###Configure minimum & maximum encryption algorithm rounds in /etc/login.defs
+###Configure minimum & maximum encryption algorithm rounds in /etc/login.defs or /usr/etc/login.defs
 SHA_CRYPT_MIN_ROUNDS 5000
 SHA_CRYPT_MAX_ROUNDS 50000
 
-###Configure minimum & maximum password age in /etc/login.defs
+###Configure minimum & maximum password age in /etc/login.defs  or /usr/etc/login.defs
 PASS_MAX_DAYS   9999
 PASS_MIN_DAYS   1
 
