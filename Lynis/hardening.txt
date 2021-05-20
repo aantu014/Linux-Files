@@ -175,6 +175,7 @@ find /tmp -type d -empty -delete
 ###Consider restricting file permissions
 sudo chmod og-rwx /etc/cron.*
 sudo chmod 600 /etc/crontab
+sudo chmod 600 /etc/ssh/sshd_config
 
 ###Double check the permissions of home directories as some might be not strict enough.
 
