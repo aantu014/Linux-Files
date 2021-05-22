@@ -84,6 +84,14 @@ cat /etc/issue
 *                                                                  *
 ********************************************************************
 
+cat/motd
+
+#################################################################################################################
+#                                                   Welcome to the server!                                      #
+#                                    All connections are monitored and recorded                                 #
+#                           Disconnect IMMEDIATELY if you are not an authorized user!                           #
+#################################################################################################################
+
 ###Enable process accounting
 sudo yum install psacct
 sudo systemctl enable psacct.service
