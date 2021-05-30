@@ -199,8 +199,8 @@ sudo chmod 600 /etc/ssh/sshd_config
 
 chmod 750 /home/user
 
-#Harden /proc with hidepid
-echo "proc    					/proc        	proc        	defaults,hidepid=2    0 0" >> /etc/fstab
+#Harden /proc with hidepid    #THIS CAUSED PROBLEMS WITH PROCESSES STARTING!!!!!
+#echo "proc    					/proc        	proc        	defaults,hidepid=2    0 0" >> /etc/fstab
 
 
 ###Enable auditd to collect audit information.
