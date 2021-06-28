@@ -17,7 +17,13 @@ apt update && apt upgrade --no-install-recommends
 
 apt install --no-install-recommends kali-archive-keyring vim systemd
 
-apt install --no-install-recommends locales && dpkg-reconfigure locales
+apt install --no-install-recommends locales
+
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+locale-gen en_US.UTF-8
+dpkg-reconfigure locales
 
 dpkg-reconfigure tzdata
 
