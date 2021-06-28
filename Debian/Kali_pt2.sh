@@ -72,8 +72,8 @@ passwd
 
 echo "Enter new user name:"
 read user
-useradd -m -g sudo -s /bin/bash $user
-passwd $user
+adduser $user
+usermod -aG sudo $user
 
 apt install --no-install-recommends xserver-xorg-input-libinput xinit xserver-xorg-core x11-xserver-utils \
 libavcodec58 firefox-esr neofetch git alsa-utils nitrogen maim stterm suckless-tools dwm sudo \
