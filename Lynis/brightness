@@ -1,0 +1,11 @@
+#!/bin/bash
+gcm=$(ls /sys/class/backlight/)
+
+lvl=${1?Error: no value given}
+int="^[0-9]+$"
+
+if ! [[ $lvl =~ $int ]] ; then
+    echo "error: Not a number" >&2; exit 1
+else
+    echo $lvl | tee /sys/class/backlight/$gcm/brightness
+fi
