@@ -1,0 +1,3 @@
+echo "install bnep /bin/true" >> /etc/modprobe.d/disable-bluetooth.conf
+echo "install bluetooth /bin/true" >> /etc/modprobe.d/disable-bluetooth.conf
+echo "install btusb /bin/true" >> /etc/modprobe.d/disable-bluetooth.conf
