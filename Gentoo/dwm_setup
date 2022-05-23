@@ -1,10 +1,11 @@
 # To copy and paste in terminal ctrl+shift+ v or c
 
-emerge --autounmask-continue -q x11-terms/st x11-misc/dmenu x11-wm/dwm x11-misc/nitrogen media-gfx/maim x11-apps/xsetroot x11-apps/transset x11-misc/xcompmgr
+emerge --autounmask-continue -q x11-terms/st x11-misc/dmenu x11-wm/dwm x11-misc/nitrogen media-gfx/maim x11-apps/xsetroot x11-apps/transset x11-misc/xcompmgr x11-misc/sct
 
 #Sxiv is image viewer
 #Nitrogen sets wallpaper
 #Maim takes screenshots
+#sct is light light
 
 echo "exec dbus-launch --sh-syntax --exit-with-session dwm" > ~/.xinitrc
 
