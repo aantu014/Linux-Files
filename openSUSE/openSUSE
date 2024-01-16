@@ -22,4 +22,8 @@ systemctl set-default graphical.target
 # xf86-video-intel   xf86-video-amdgpu   xf86-video-nv   xf86-video-fbdev
 
 #Firfox cant play html5 video so go to this website
+# Installing just libavformat57 fixes the issue.
 #https://en.opensuse.org/SDB:Firefox_MP4/H.264_Video_Support 
+
+#Switch to dbus-broker.
+#https://www.reddit.com/r/openSUSE/comments/137adlo/heres_how_to_use_dbusbroker_instead_of_dbusdaemon/
