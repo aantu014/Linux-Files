@@ -15,7 +15,7 @@ systemctl set-default graphical.target
 
 
 #Extrall packages you may want to install
-# NetworkManager-applet  Notepadqq tlp  xfce4-notifyd thunar-volman  neofetch
+# NetworkManager-applet  Notepadqq tlp  xfce4-notifyd thunar-volman  neofetch mupdf redshift sxiv
 # mugshot xfce4-screenshooter openssh-clients
 # indic-fonts google-noto-sans-arabic-fonts  google-noto-sans-cjk-fonts  google-noto-coloremoji-fonts
 
